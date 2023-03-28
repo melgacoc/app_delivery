@@ -11,6 +11,7 @@ function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
+  const [invalidLogin, setInvalidLogin] = useState(false);
 
   useEffect(() => {
     const regex = /\S+@\S+\.\S+/;
@@ -29,7 +30,7 @@ function LogIn() {
 
   const handleSubmit = async () => {
     const response = await fetch(
-      'http://localhost:3001/login',
+      'http://localhost:3306/login',
       {
         method: 'POST',
         headers: {
@@ -39,11 +40,10 @@ function LogIn() {
       },
     );
 
-    const data = JSON.parse(response);
+    const data = await response.json();
+    if (!data) setInvalidLogin(true);
     return data;
   };
-
-  const data = 'test';
 
   return (
     <div className="logInContainer">
@@ -99,7 +99,7 @@ function LogIn() {
       </section>
       {' '}
       {
-        (data.status === '') ? (
+        invalidLogin ? (
           <section>
             <div
               data-testid={ `${ROUTE}${INVALID}` }
