@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
         foreignKey: true,
         field: 'seller_id',
-        references: { model: 'sellers', key: 'id' },
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },

@@ -15,20 +15,18 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Sale.associate = (models) => {
-    models.User.belongsToMany(models.Seller, {
-      as: 'sellers',
+    models.Sale.belongsTo(models.User, {
+      as: 'users',
       through: Sale,
       foreignKey: 'userId',
-      otherKey: 'sellerId',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     });
 
-    models.Seller.belongsToMany(models.User, {
+    models.Sale.belongsTo(models.User, {
       as: 'users',
       through: Sale,
       foreignKey: 'sellerId',
-      otherKey: 'userId',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     });
