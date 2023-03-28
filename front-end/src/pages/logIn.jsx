@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ROUTE,
   EMAIL,
@@ -10,10 +10,19 @@ import { ROUTE,
 function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const emailValue = '';
-  // const passwordValue = '';
+  const [disableButton, setDisableButton] = useState(true);
 
-  const query = {
+  useEffect(() => {
+    const regex = /\S+@\S+\.\S+/;
+    const passwordMin = 6;
+    if (regex.test(email) && password.length >= passwordMin) {
+      setDisableButton(false);
+    } else {
+      setDisableButton(true);
+    }
+  }, [email, password]);
+
+  const requestBody = {
     email,
     password,
   };
@@ -26,7 +35,7 @@ function LogIn() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(query),
+        body: JSON.stringify(requestBody),
       },
     );
 
@@ -51,7 +60,7 @@ function LogIn() {
             name="email"
             placeholder="LogIn"
             value={ email }
-            onChange={ ({ target }) => setEmail(target) }
+            onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
         <label htmlFor="password">
@@ -63,7 +72,7 @@ function LogIn() {
             name="password"
             value={ password }
             placeholder="Password"
-            onChange={ ({ target }) => setPassword(target) }
+            onChange={ ({ target }) => setPassword(target.value) }
           />
         </label>
         <button
@@ -73,6 +82,7 @@ function LogIn() {
           name="subButton"
           onClick={ handleSubmit }
           placeholder="Entrar"
+          disabled={ disableButton }
         >
           Entrar
         </button>
