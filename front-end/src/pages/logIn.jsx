@@ -24,36 +24,29 @@ function LogIn() {
     }
   }, [email, password]);
 
-  const requestBody = {
-    email,
-    password,
-  };
-
   const handleSubmit = async () => {
+    const requestBody = {
+      email,
+      password,
+    };
+
     const response = await fetch(
       'http://localhost:3001/users/login',
       {
         method: 'POST',
-        // headers: {
-        //   'Content-Type': 'application/json',
-        //   mode: 'no-cors',
-        //   'Access-Control-Allow-Origin': '*',
-        //   'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-        // },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+        },
         body: JSON.stringify(requestBody),
       },
     );
 
-    // const response = await axios({
-    //   method: 'post',
-    //   headers: { 'Access-Control-Allow-Origin': '*',
-    //     'Content-Type': 'application/json',
-    //     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS' },
-    //   url: 'http://localhost:3001/users/login',
-    //   data: requestBody,
-    // });
     console.log(response);
     const data = await response.json();
+    console.log(data);
     if (!data) setInvalidLogin(true);
     return data;
   };
