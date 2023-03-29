@@ -18,9 +18,7 @@ const login = async (email, password) => {
     validateEncryption(md5(password), user.password);
   }
 
-  return { name: user.name,
-    email: user.email,
-    role: user.role };
+  return user;
 };
 
 module.exports = {
