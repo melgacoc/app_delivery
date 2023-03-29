@@ -8,6 +8,7 @@ function App() {
     <Switch>
       <Route exact path="/" render={ () => <Redirect to="/login" /> } />
       <Route path="/login" component={ LogIn } />
+      <Route path="/customer/products" render={ () => <h1>ah</h1> } />
     </Switch>
   );
 }

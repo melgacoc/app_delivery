@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 import { ROUTE,
   EMAIL,
   PASSWORD,
@@ -13,6 +12,7 @@ function LogIn() {
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
   const [invalidLogin, setInvalidLogin] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     const regex = /\S+@\S+\.\S+/;
@@ -44,11 +44,14 @@ function LogIn() {
       },
     );
 
-    console.log(response);
     const data = await response.json();
     console.log(data);
-    if (!data) setInvalidLogin(true);
-    return data;
+    const NOT_FOUND_STATUS = 404;
+    const OK_STATUS = 200;
+    if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
+    if (response.status === OK_STATUS) {
+      history.push('/customer/products');
+    }
   };
 
   return (
@@ -105,15 +108,15 @@ function LogIn() {
       </section>
       {' '}
       {
-        invalidLogin ? (
+        invalidLogin && (
           <section>
             <div
               data-testid={ `${ROUTE}${INVALID}` }
             >
-              Error
+              E-mail or password invalids
             </div>
           </section>
-        ) : (null)
+        )
       }
     </div>
   );
