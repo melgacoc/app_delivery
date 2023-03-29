@@ -9,7 +9,8 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
-  await usersService.register(name, email, password);
+  const user = await usersService.register(name, email, password);
+  if (user === -1) return res.status(409).json({ message: 'Name or e-mail conflict' });
   return res.status(201).json({});
 };
 

@@ -12,7 +12,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
-  const [invalidLogin, setInvalidLogin] = useState(false);
+  const [invalidRegister, setInvalidRegister] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
@@ -49,9 +49,9 @@ function Register() {
       },
     );
 
-    const NOT_FOUND_STATUS = 404;
+    const CONFLICT_STATUS = 409;
     const CREATED_STATUS = 201;
-    if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
+    if (response.status === CONFLICT_STATUS) setInvalidRegister(true);
     if (response.status === CREATED_STATUS) {
       history.push('/customer/products');
     }
@@ -107,7 +107,7 @@ function Register() {
         Cadastrar
       </button>
       {
-        invalidLogin ? (
+        invalidRegister ? (
           <div
             data-testid={ `${ROUTE}${INVALID}` }
           >
