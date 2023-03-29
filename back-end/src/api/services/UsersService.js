@@ -21,6 +21,16 @@ const login = async (email, password) => {
   return user;
 };
 
+const register = async (name, email, password) => {
+  const passwordEncrypted = md5(password);
+  await User.create({
+    name,
+    email,
+    password: passwordEncrypted,
+  });
+};
+
 module.exports = {
   login,
+  register,
 };

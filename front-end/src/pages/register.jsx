@@ -49,12 +49,10 @@ function Register() {
       },
     );
 
-    const data = await response.json();
-    console.log(data);
     const NOT_FOUND_STATUS = 404;
-    const OK_STATUS = 200;
+    const CREATED_STATUS = 201;
     if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
-    if (response.status === OK_STATUS) {
+    if (response.status === CREATED_STATUS) {
       history.push('/customer/products');
     }
   };
