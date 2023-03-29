@@ -19,11 +19,9 @@ function Register() {
     const regex = /\S+@\S+\.\S+/;
     const passwordMin = 6;
     const validName = 12;
-    const emptyName = 0;
     if (regex.test(email)
     && password.length >= passwordMin
-    && name.length < validName
-    && name.length > emptyName) {
+    && name.length > validName) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
@@ -32,6 +30,7 @@ function Register() {
 
   const handleSubmit = async () => {
     const requestBody = {
+      name,
       email,
       password,
     };
