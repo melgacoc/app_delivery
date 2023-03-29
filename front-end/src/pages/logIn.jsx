@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ROUTE,
   EMAIL,
   PASSWORD,
@@ -12,6 +12,7 @@ function LogIn() {
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
   const [invalidLogin, setInvalidLogin] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     const regex = /\S+@\S+\.\S+/;
@@ -44,9 +45,13 @@ function LogIn() {
     );
 
     const data = await response.json();
+    console.log(data);
     const NOT_FOUND_STATUS = 404;
+    const OK_STATUS = 200;
     if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
-    return data;
+    if (response.status === OK_STATUS) {
+      history.push('/customer/products');
+    }
   };
 
   return (
