@@ -11,9 +11,6 @@ app.use((req, res, next) => {
     'Access-Control-Allow-Headers': '*',
     'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
   });
-  // res.append('access-control-allow-origin', '*');
-  // res.append('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  // res.append('Access-Control-Allow-Methods', '*');
   next();
 });
 

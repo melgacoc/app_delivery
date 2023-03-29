@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { ROUTE,
   EMAIL,
   PASSWORD,
@@ -44,10 +43,9 @@ function LogIn() {
       },
     );
 
-    console.log(response);
     const data = await response.json();
-    console.log(data);
-    if (!data) setInvalidLogin(true);
+    const NOT_FOUND_STATUS = 404;
+    if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
     return data;
   };
 
@@ -105,15 +103,15 @@ function LogIn() {
       </section>
       {' '}
       {
-        invalidLogin ? (
+        invalidLogin && (
           <section>
             <div
               data-testid={ `${ROUTE}${INVALID}` }
             >
-              Error
+              E-mail or password invalids
             </div>
           </section>
-        ) : (null)
+        )
       }
     </div>
   );
