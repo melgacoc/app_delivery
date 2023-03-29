@@ -12,18 +12,16 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
-  const [invalidLogin, setInvalidLogin] = useState(false);
+  const [invalidRegister, setInvalidRegister] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
     const regex = /\S+@\S+\.\S+/;
     const passwordMin = 6;
     const validName = 12;
-    const emptyName = 0;
     if (regex.test(email)
     && password.length >= passwordMin
-    && name.length < validName
-    && name.length > emptyName) {
+    && name.length > validName) {
       setDisableButton(false);
     } else {
       setDisableButton(true);
@@ -32,6 +30,7 @@ function Register() {
 
   const handleSubmit = async () => {
     const requestBody = {
+      name,
       email,
       password,
     };
@@ -50,12 +49,10 @@ function Register() {
       },
     );
 
-    const data = await response.json();
-    console.log(data);
-    const NOT_FOUND_STATUS = 404;
-    const OK_STATUS = 200;
-    if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
-    if (response.status === OK_STATUS) {
+    const CONFLICT_STATUS = 409;
+    const CREATED_STATUS = 201;
+    if (response.status === CONFLICT_STATUS) setInvalidRegister(true);
+    if (response.status === CREATED_STATUS) {
       history.push('/customer/products');
     }
   };
@@ -110,7 +107,7 @@ function Register() {
         Cadastrar
       </button>
       {
-        invalidLogin ? (
+        invalidRegister ? (
           <div
             data-testid={ `${ROUTE}${INVALID}` }
           >

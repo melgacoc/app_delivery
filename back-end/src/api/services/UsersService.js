@@ -1,4 +1,5 @@
 const md5 = require('md5');
+const { Op } = require('sequelize');
 const { User } = require('../../database/models');
 
 const validateEncryption = (password, passwordDb) => {
@@ -21,6 +22,23 @@ const login = async (email, password) => {
   return user;
 };
 
+const register = async (name, email, password) => {
+  const user = await User.findOne({
+    where: { 
+      [Op.or]: [{ name }, { email }],
+    },
+  });
+  if (user) return -1;
+
+  const passwordEncrypted = md5(password);
+  await User.create({
+    name,
+    email,
+    password: passwordEncrypted,
+  });
+};
+
 module.exports = {
   login,
+  register,
 };
