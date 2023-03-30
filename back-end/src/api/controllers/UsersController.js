@@ -23,7 +23,7 @@ const register = async (req, res) => {
   const user = await usersService.register(name, email, password);
   if (user === -1) return res.status(409).json({ message: 'Name or e-mail conflict' });
   const token = validateLogin(user);
-  return res.status(201).json(token);
+  return res.status(201).json({ ...user, token });
 };
 
 module.exports = {
