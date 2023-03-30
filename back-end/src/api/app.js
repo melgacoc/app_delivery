@@ -5,6 +5,8 @@ const usersRoutes = require('./routes/UsersRoutes');
 const app = express();
 app.use(express.json());
 
+app.use(express.static('public'));
+  
 app.use((req, res, next) => {
   res.set({
     'Content-Type': 'application/json',
