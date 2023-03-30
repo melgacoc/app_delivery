@@ -9,42 +9,39 @@ import {
 } from '../dataTestedId/clientHeaderIds';
 
 function ClientHeader() {
-    const history = useHistory();
-    const [user, setUser] = useState({});
+  const history = useHistory();
+  const [user, setUser] = useState({});
 
-    useEffect(() => {
-        // const token = localStorage.getItem('token');
-        // if (!token) {
-            // history.push('/login');
-        // }
+  useEffect(() => {
+    // const token = localStorage.getItem('token');
+    // if (!token) {
+    // history.push('/login');
+    // }
 
-        const fetch = async () => {
+    // const fetch = async () => {
+    //   const response = await fetch(
+    //     'http://localhost:3001/users/register',
+    //     {
+    //       method: 'GET',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         'Access-Control-Allow-Origin': '*',
+    //         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    //         'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+    //       },
+    //     },
+    //   );
 
-        const response = await fetch(
-            'http://localhost:3001/users/register',
-            {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-              },
-            },
-          );
+    //   const { name } = await response.json();
+    //   setUser({ name });
+    // };
+  });
 
-        const { name } = await response.json();
-        setUser({ name });
-        
-        };
-
-    });
-    
-    const handleLogOut = () => {
-      localStorage.clear();
-      window.location.reload();
-      history.push('/login');
-    };
+  const handleLogOut = () => {
+    localStorage.clear();
+    window.location.reload();
+    history.push('/login');
+  };
 
   return (
     <div>

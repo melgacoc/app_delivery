@@ -4,13 +4,12 @@ import ClientHeader from '../components/clientHeader';
 import ProductsTable from '../components/productsTable';
 
 function Shopping() {
-
-    return (
-        <div>
-            <ClientHeader />
-            <ProductsTable />
-        </div>
-    )
+  return (
+    <div>
+      <ClientHeader />
+      <ProductsTable />
+    </div>
+  );
 }
 
 export default Shopping;

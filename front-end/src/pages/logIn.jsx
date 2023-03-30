@@ -50,8 +50,8 @@ function LogIn() {
       name: data.name,
       email: data.email,
       role: data.role,
-      token: data.token
-    }
+      token: data.token,
+    };
 
     localStorage.setItem('user', user);
 
