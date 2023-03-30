@@ -4,10 +4,11 @@ import Context from './context';
 
 function Provider({ children }) {
   const [products, setProducts] = useState([]);
+
   const contextValue = useMemo(() => ({
     products,
     setProducts,
-  }, [products]));
+  }), [products]);
 
   return (
     <Context.Provider value={ contextValue }>

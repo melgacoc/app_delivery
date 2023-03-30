@@ -1,35 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-function ProductsTable() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        'http://localhost:3001/products',
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-          },
-          body: JSON.stringify(requestBody),
-        },
-      );
-      const data = await response.json();
-      setProducts(data);
-    }
-    fetchData();
-  }, []);
+function ProductsTable({ name, price, urlImage }) {
   return (
     <div>
-      <h1>Products Table</h1>
-      {products.map((product, index) => (
-        <img key={ index } alt="" src={ product.urlImage } />))}
+      <p>{name}</p>
+      <input
+        type="number"
+      />
+      <p>{price}</p>
+      <img
+        alt={ name }
+        src={ urlImage }
+        width="50px"
+        height="50px"
+      />
     </div>
   );
 }
+
+ProductsTable.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.number,
+  urlImage: PropTypes.string,
+}.isRequired;
 
 export default ProductsTable;
