@@ -45,6 +45,16 @@ function LogIn() {
     );
 
     const data = await response.json();
+
+    const user = {
+      name: data.name,
+      email: data.email,
+      role: data.role,
+      token: data.token
+    }
+
+    localStorage.setItem('user', user);
+
     console.log(data);
     const NOT_FOUND_STATUS = 404;
     const OK_STATUS = 200;
