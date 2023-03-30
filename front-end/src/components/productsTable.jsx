@@ -1,44 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import '../styles/productCard.css';
 
 function ProductsTable() {
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  const handleAddToCart = (value) => {
-    setCart(...cart, value);
-    console.log(cart);
-  };
-
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        'http://localhost:3001/products',
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+          },
+          body: JSON.stringify(requestBody),
+        },
+      );
+      const data = await response.json();
+      setProducts(data);
+    }
+    fetchData();
+  }, []);
   return (
-    <div
-      className="container"
-      key={ id }
-    >
-      <h3>{id}</h3>
-      <p>{ name }</p>
-      <img src={ urlImage } alt={ name } />
-      <p>
-        R$:
-        {price}
-      </p>
-      <button
-        type="button"
-        id="addButton"
-        name="addbutton"
-        value={ id }
-        onClick={ ({ target }) => handleAddToCart(target.value) }
-      >
-        +
-      </button>
-      <input
-        type="number"
-        name="quantity"
-        id="quantity"
-        disabled="true"
-      />
-      <button>
-        -
-      </button>
+    <div>
+      <h1>Products Table</h1>
+      {products.map((product, index) => (
+        <img key={ index } alt="" src={ product.urlImage } />))}
     </div>
   );
 }
