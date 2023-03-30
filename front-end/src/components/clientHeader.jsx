@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   ROUTE,
@@ -10,7 +10,6 @@ import {
 
 function ClientHeader() {
   const history = useHistory();
-  const [user, setUser] = useState({});
 
   useEffect(() => {
     // const token = localStorage.getItem('token');
