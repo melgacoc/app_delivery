@@ -18,7 +18,7 @@ function ClientHeader() {
     if (!user.token) history.push('/login');
 
     setUserName(user.name);
-  });
+  }, []);
 
   const handleLogOut = () => {
     localStorage.clear();

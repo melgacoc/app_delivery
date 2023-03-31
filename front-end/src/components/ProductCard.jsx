@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-// import Context from '../context/Context';
 import {
   ROUTE,
   PRICE,
@@ -10,35 +9,41 @@ import {
   ADD_BTN,
   INPUT,
 } from '../dataTestedId/CustomerProductsIds';
+import Context from '../context/Context';
 
 function ProductCard({ id, name, price, urlImage }) {
-  // const { productsQuantity, setProductsQuantity } = useContext(Context);
-  const [item, setItem] = useState(0);
-  const [car, setCar] = useState([]);
+  const { setGlobalCart } = useContext(Context);
+  const [quantity, setQuantity] = useState(0);
 
-  useEffect(() => {
-    const carStorage = localStorage.getItem('carStorage')
-      ? JSON.parse(localStorage.getItem('carStorage')) : [];
-    setCar(carStorage);
-  }, []);
-
-  useEffect(() => {
+  const updateCartStorage = () => {
+    const cartStorage = localStorage.getItem('cart')
+      ? JSON.parse(localStorage.getItem('cart')) : [];
     const itemToUpdate = {
-      product: name,
-      quantity: item,
+      name,
+      quantity,
+      price: Number(price),
     };
+    const listToUpdate = cartStorage.filter((product) => product.name !== name);
+    const newList = [...listToUpdate, itemToUpdate];
+    localStorage.setItem('cart', JSON.stringify(newList));
+    setGlobalCart(newList);
+  };
 
-    const listToUpdate = car.filter((product) => product.product !== name);
-    setCar([...listToUpdate, itemToUpdate]);
-  }, [item]);
+  const handleQuantity = ({ target }) => {
+    if (target.value >= 0) setQuantity(Number(target.value));
+  };
 
   const handleIncrement = () => {
-    setItem(item + 1);
+    setQuantity(quantity + 1);
   };
 
   const handleDecrement = () => {
-    if (item.quantity > 0) setItem(item - 1);
+    if (quantity > 0) setQuantity(quantity - 1);
   };
+
+  useEffect(() => {
+    updateCartStorage();
+  }, [quantity]);
 
   return (
     <div>
@@ -60,8 +65,8 @@ function ProductCard({ id, name, price, urlImage }) {
       </button>
       <input
         type="number"
-        value={ item }
-        onChange={ ({ target }) => setItem(target.value) }
+        value={ quantity }
+        onChange={ handleQuantity }
         data-testid={ `${ROUTE}${INPUT}${id}` }
       />
       <button

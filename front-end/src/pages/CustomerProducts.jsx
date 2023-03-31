@@ -1,28 +1,40 @@
-import React, { useEffect, useContext } from 'react';
-import uuid from 'react-uuid';
+import React, { useContext, useEffect, useState } from 'react';
 import ClientHeader from '../components/ClientHeader';
 import ProductCard from '../components/ProductCard';
 import Context from '../context/Context';
+import {
+  ROUTE,
+  BTN_CART,
+  CHECKOUT,
+} from '../dataTestedId/CustomerProductsIds';
 
 function CustomerProducts() {
-  const { products, setProducts } = useContext(Context);
+  const { products, globalCart } = useContext(Context);
+  const [cartValue, setCartValue] = useState(0);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch('http://localhost:3001/products');
-      const data = await response.json();
-      console.log(data);
-      setProducts(data);
-    };
-    fetchProducts();
-  }, []);
+    const valueToUpdate = globalCart
+      .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+
+    const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
+    setCartValue(fixedValue);
+  }, [globalCart]);
 
   return (
     <div>
       <ClientHeader />
+      <button
+        type="button"
+        data-testid={ `${ROUTE}${BTN_CART}` }
+      >
+        CARRINHO
+      </button>
+      <p data-testid={ `${ROUTE}${CHECKOUT}` }>
+        {cartValue}
+      </p>
       {products.map(({ id, name, price, urlImage }) => (
         <ProductCard
-          key={ uuid() }
+          key={ id }
           id={ id }
           name={ name }
           price={ price }

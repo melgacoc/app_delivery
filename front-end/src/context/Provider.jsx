@@ -1,20 +1,36 @@
 import PropTypes from 'prop-types';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import Context from './Context';
 
 function Provider({ children }) {
   const [products, setProducts] = useState([]);
   const [userName, setUserName] = useState('');
-  const [productsQuantity, setProductsQuantity] = useState([]);
+  const [globalCart, setGlobalCart] = useState([]);
+
+  const cartTotalValue = useCallback((cart) => {
+    const totalValue = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    setGlobalCart(totalValue);
+  }, []);
 
   const contextValue = useMemo(() => ({
     products,
     setProducts,
     userName,
     setUserName,
-    productsQuantity,
-    setProductsQuantity,
-  }), [products, userName, productsQuantity]);
+    globalCart,
+    setGlobalCart,
+    cartTotalValue,
+  }), [products, userName, globalCart]);
+
+  const fetchProducts = async () => {
+    const response = await fetch('http://localhost:3001/products');
+    const data = await response.json();
+    setProducts(data);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <Context.Provider value={ contextValue }>

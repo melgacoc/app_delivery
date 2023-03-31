@@ -5,6 +5,8 @@ const TITLE = 'element-card-title-';
 const RM_BTN = 'button-card-rm-item-';
 const ADD_BTN = 'button-card-add-item-';
 const INPUT = 'input-card-quantity-';
+const BTN_CART = 'button-cart';
+const CHECKOUT = 'checkout-bottom-value';
 
 export {
   ROUTE,
@@ -14,4 +16,6 @@ export {
   RM_BTN,
   ADD_BTN,
   INPUT,
+  BTN_CART,
+  CHECKOUT,
 };
