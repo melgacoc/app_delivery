@@ -31,11 +31,12 @@ const register = async (name, email, password) => {
   if (user) return -1;
 
   const passwordEncrypted = md5(password);
-  await User.create({
+  const createdUser = await User.create({
     name,
     email,
     password: passwordEncrypted,
   });
+  return createdUser;
 };
 
 module.exports = {
