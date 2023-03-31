@@ -43,7 +43,7 @@ function ProductCard({ id, name, price, urlImage }) {
   return (
     <div>
       <p data-testid={ `${ROUTE}${TITLE}${id}` }>{name}</p>
-      <p data-testid={ `${ROUTE}${PRICE}${id}` }>{price}</p>
+      <p data-testid={ `${ROUTE}${PRICE}${id}` }>{price.replace('.', ',')}</p>
       <img
         alt={ name }
         src={ urlImage }
