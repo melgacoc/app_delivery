@@ -49,6 +49,16 @@ function Register() {
       },
     );
 
+    const data = await response.json();
+
+    const user = {
+      name: data.name,
+      email: data.email,
+      role: data.role,
+      token: data.token,
+    };
+    localStorage.setItem('user', JSON.stringify(user));
+
     const CONFLICT_STATUS = 409;
     const CREATED_STATUS = 201;
     if (response.status === CONFLICT_STATUS) setInvalidRegister(true);
