@@ -1,10 +1,10 @@
 import React, { useEffect, useContext } from 'react';
 import uuid from 'react-uuid';
-import ClientHeader from '../components/clientHeader';
+import ClientHeader from '../components/ClientHeader';
 import ProductCard from '../components/ProductCard';
 import Context from '../context/Context';
 
-function Shopping() {
+function CustomerProducts() {
   const { products, setProducts } = useContext(Context);
 
   useEffect(() => {
@@ -33,4 +33,4 @@ function Shopping() {
   );
 }
 
-export default Shopping;
+export default CustomerProducts;

@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Context from '../context/Context';
+// import Context from '../context/Context';
 import {
   ROUTE,
   PRICE,
@@ -12,7 +12,7 @@ import {
 } from '../dataTestedId/CustomerProductsIds';
 
 function ProductCard({ id, name, price, urlImage }) {
-  const { productsQuantity, setProductsQuantity } = useContext(Context);
+  // const { productsQuantity, setProductsQuantity } = useContext(Context);
   const [item, setItem] = useState(0);
   const [car, setCar] = useState([]);
 
