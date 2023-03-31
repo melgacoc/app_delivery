@@ -22,7 +22,6 @@ function ClientHeader() {
 
   const handleLogOut = () => {
     localStorage.clear();
-    window.location.reload();
     history.push('/login');
   };
 
