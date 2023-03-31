@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ClientHeader from '../components/ClientHeader';
 import ProductCard from '../components/ProductCard';
 import Context from '../context/Context';
@@ -11,6 +12,7 @@ import {
 function CustomerProducts() {
   const { products, globalCart } = useContext(Context);
   const [cartValue, setCartValue] = useState(0);
+  const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     const valueToUpdate = globalCart
@@ -18,17 +20,23 @@ function CustomerProducts() {
 
     const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
     setCartValue(fixedValue);
+
+    if (valueToUpdate > 0) setDisabled(false);
+    else setDisabled(true);
   }, [globalCart]);
 
   return (
     <div>
       <ClientHeader />
-      <button
-        type="button"
-        data-testid={ `${ROUTE}${BTN_CART}` }
-      >
-        CARRINHO
-      </button>
+      <Link to="/customer/checkout">
+        <button
+          type="button"
+          data-testid={ `${ROUTE}${BTN_CART}` }
+          disabled={ disabled }
+        >
+          CARRINHO
+        </button>
+      </Link>
       <p data-testid={ `${ROUTE}${CHECKOUT}` }>
         {cartValue}
       </p>
