@@ -7,7 +7,7 @@ import {
   HEADER_NAME,
   HEADER_LOGOUT,
 } from '../dataTestedId/clientHeaderIds';
-import Context from '../context/context';
+import Context from '../context/Context';
 
 function ClientHeader() {
   const history = useHistory();

@@ -1,8 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import uuid from 'react-uuid';
 import ClientHeader from '../components/clientHeader';
-import ProductsTable from '../components/productsTable';
-import Context from '../context/context';
+import ProductCard from '../components/ProductCard';
+import Context from '../context/Context';
 
 function Shopping() {
   const { products, setProducts } = useContext(Context);
@@ -20,12 +20,13 @@ function Shopping() {
   return (
     <div>
       <ClientHeader />
-      {products.map((product) => (
-        <ProductsTable
+      {products.map(({ id, name, price, urlImage }) => (
+        <ProductCard
           key={ uuid() }
-          name={ product.name }
-          price={ product.price }
-          urlImage={ product.urlImage }
+          id={ id }
+          name={ name }
+          price={ price }
+          urlImage={ urlImage }
         />
       ))}
     </div>
