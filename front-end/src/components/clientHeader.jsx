@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   ROUTE,
@@ -7,33 +7,17 @@ import {
   HEADER_NAME,
   HEADER_LOGOUT,
 } from '../dataTestedId/clientHeaderIds';
+import Context from '../context/context';
 
 function ClientHeader() {
   const history = useHistory();
+  const { userName, setUserName } = useContext(Context);
 
   useEffect(() => {
-    // const token = localStorage.getItem('token');
-    // if (!token) {
-    // history.push('/login');
-    // }
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (!user.token) history.push('/login');
 
-    // const fetch = async () => {
-    //   const response = await fetch(
-    //     'http://localhost:3001/users/register',
-    //     {
-    //       method: 'GET',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         'Access-Control-Allow-Origin': '*',
-    //         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    //         'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-    //       },
-    //     },
-    //   );
-
-    //   const { name } = await response.json();
-    //   setUser({ name });
-    // };
+    setUserName(user.name);
   });
 
   const handleLogOut = () => {
@@ -58,7 +42,7 @@ function ClientHeader() {
       <p
         data-testid={ `${ROUTE}${HEADER_NAME}` }
       >
-        { user.name }
+        {userName}
       </p>
       <button
         data-testid={ `${ROUTE}${HEADER_LOGOUT}` }

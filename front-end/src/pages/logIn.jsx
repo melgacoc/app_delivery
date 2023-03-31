@@ -52,10 +52,8 @@ function LogIn() {
       role: data.role,
       token: data.token,
     };
+    localStorage.setItem('user', JSON.stringify(user));
 
-    localStorage.setItem('user', user);
-
-    console.log(data);
     const NOT_FOUND_STATUS = 404;
     const OK_STATUS = 200;
     if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);

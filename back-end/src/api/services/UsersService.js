@@ -13,6 +13,7 @@ const validateEncryption = (password, passwordDb) => {
 const login = async (email, password) => {
   const user = await User.findOne({
     where: { email },
+    raw: true,
   });
 
   if (user) {
@@ -36,7 +37,7 @@ const register = async (name, email, password) => {
     email,
     password: passwordEncrypted,
   });
-  return createdUser;
+  return createdUser.get({ plain: true });
 };
 
 module.exports = {
