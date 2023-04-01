@@ -8,11 +8,30 @@ function Provider({ children }) {
   const [globalCart, setGlobalCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState('0,00');
   const [sellers, setSellers] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   const cartTotalValue = useCallback((cart) => {
     const totalValue = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
     setGlobalCart(totalValue);
   }, []);
+
+  const fetchOrders = async (id, token) => {
+    const response = await fetch(
+      `http://localhost:3001/sales/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+          authorization: token,
+        },
+      },
+    );
+    const data = await response.json();
+    setOrders(data);
+  };
 
   const contextValue = useMemo(() => ({
     products,
@@ -26,7 +45,10 @@ function Provider({ children }) {
     setTotalPrice,
     sellers,
     setSellers,
-  }), [products, userName, globalCart, totalPrice, sellers]);
+    orders,
+    setOrders,
+    fetchOrders,
+  }), [products, userName, globalCart, totalPrice, sellers, orders]);
 
   const fetchProducts = async () => {
     const response = await fetch('http://localhost:3001/products');

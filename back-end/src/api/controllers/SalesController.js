@@ -6,8 +6,8 @@ const create = async (req, res) => {
 };
 
 const getOrders = async (req, res) => {
-  const { userId } = req.body.params;
-  const orders = await salesService.getOrders(userId);
+  const { id } = req.params;
+  const orders = await salesService.getOrders(id);
   return res.status(200).json(orders);
 };
 

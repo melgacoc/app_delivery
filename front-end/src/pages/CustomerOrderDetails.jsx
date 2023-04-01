@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ClientHeader from '../components/ClientHeader';
 import OrderTable from '../components/OrderTable';
 import TotalPriceElement from '../components/TotalPriceElement';
 import { ROUTE } from '../dataTestedId/CustomerOrderDetails';
 import OrderDetails from '../components/OrderDetails';
+import Context from '../context/Context';
 
 function CustomerOrderDetails() {
-  const [orders, setOrders] = useState([]);
-
-  const fetchOrders = async (id) => {
-    const response = await fetch(`http://localhost:3001/sales/${id}`);
-    const data = await response.json();
-    setOrders(data);
-  };
+  const { orders, fetchOrders } = useContext(Context);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
-    fetchOrders(user.id);
+    fetchOrders(user.id, user.token);
+    console.log(orders);
   }, []);
 
   return (
@@ -25,7 +21,7 @@ function CustomerOrderDetails() {
       {orders.map((order, index) => (
         <div
           key={ index }
-          data-testid={ `customer_orders__element-order-id-${order.id}` }
+          data-testid={ `customer_orders__element-order-date-${order.id}` }
         >
           <OrderDetails />
           <OrderTable testIdRoute={ ROUTE } />
