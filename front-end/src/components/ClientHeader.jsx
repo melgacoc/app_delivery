@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import {
   ROUTE,
   HEADER_PRODUCTS,
@@ -27,17 +27,20 @@ function ClientHeader() {
 
   return (
     <div>
-      <h1>Client Header</h1>
-      <p
-        data-testid={ `${ROUTE}${HEADER_PRODUCTS}` }
-      >
-        Produtos
-      </p>
-      <p
-        data-testid={ `${ROUTE}${HEADER_ORDERS}` }
-      >
-        Meus Pedidos
-      </p>
+      <Link to="/customer/products">
+        <p
+          data-testid={ `${ROUTE}${HEADER_PRODUCTS}` }
+        >
+          Produtos
+        </p>
+      </Link>
+      <Link to="/customer/orders">
+        <p
+          data-testid={ `${ROUTE}${HEADER_ORDERS}` }
+        >
+          Meus Pedidos
+        </p>
+      </Link>
       <p
         data-testid={ `${ROUTE}${HEADER_NAME}` }
       >

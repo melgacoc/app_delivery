@@ -2,20 +2,18 @@ import React from 'react';
 import ClientHeader from '../components/ClientHeader';
 import OrderTable from '../components/OrderTable';
 import TotalPriceElement from '../components/TotalPriceElement';
-import AddressDetails from '../components/AddressDetails';
-import {
-  ROUTE,
-} from '../dataTestedId/CustomerCheckoutIds';
+import { ROUTE } from '../dataTestedId/CustomerOrderDetails';
+import OrderDetails from '../components/OrderDetails';
 
-function CustomerCheckout() {
+function CustomerOrderDetails() {
   return (
     <div>
       <ClientHeader />
+      <OrderDetails />
       <OrderTable testIdRoute={ ROUTE } />
       <TotalPriceElement testIdRoute={ ROUTE } />
-      <AddressDetails />
     </div>
   );
 }
 
-export default CustomerCheckout;
+export default CustomerOrderDetails;

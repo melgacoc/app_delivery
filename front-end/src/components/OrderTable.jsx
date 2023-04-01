@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import {
-  ROUTE,
   ITEM_NUM,
   NAME,
   QNT,
@@ -10,7 +10,7 @@ import {
 } from '../dataTestedId/CustomerCheckoutIds';
 import Context from '../context/Context';
 
-function OrderTable() {
+function OrderTable({ testIdRoute }) {
   const { globalCart, setTotalPrice, setGlobalCart } = useContext(Context);
   const [order, setOrder] = useState([]);
 
@@ -48,24 +48,24 @@ function OrderTable() {
         <tr>
           {order.map(({ name, quantity, price }, index) => (
             <td key={ `${name}-${index}` }>
-              <p data-testid={ `${ROUTE}${ITEM_NUM}${index}` }>
+              <p data-testid={ `${testIdRoute}${ITEM_NUM}${index}` }>
                 {index + 1}
               </p>
-              <p data-testid={ `${ROUTE}${NAME}${index}` }>
+              <p data-testid={ `${testIdRoute}${NAME}${index}` }>
                 {name}
               </p>
-              <p data-testid={ `${ROUTE}${QNT}${index}` }>
+              <p data-testid={ `${testIdRoute}${QNT}${index}` }>
                 {quantity}
               </p>
-              <p data-testid={ `${ROUTE}${PRICE}${index}` }>
+              <p data-testid={ `${testIdRoute}${PRICE}${index}` }>
                 {price.toFixed(2).toString().replace('.', ',')}
               </p>
-              <p data-testid={ `${ROUTE}${SUBTOTAL}${index}` }>
+              <p data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }>
                 {(price * quantity).toFixed(2).toString().replace('.', ',')}
               </p>
               <button
                 type="button"
-                data-testid={ `${ROUTE}${REMOVE}${index}` }
+                data-testid={ `${testIdRoute}${REMOVE}${index}` }
                 onClick={ () => handleRemove(name) }
               >
                 Remover
@@ -76,5 +76,9 @@ function OrderTable() {
     </table>
   );
 }
+
+OrderTable.propTypes = {
+  testIdRoute: PropTypes.string,
+}.isRequired;
 
 export default OrderTable;

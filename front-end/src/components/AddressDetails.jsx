@@ -48,7 +48,7 @@ function AddressDetails() {
     );
     const data = await response.json();
     const CREATED_STATUS = 201;
-    if (response.status === CREATED_STATUS) history.push(`customer/orders/${data.id}`);
+    if (response.status === CREATED_STATUS) history.push(`/customer/orders/${data.id}`);
   };
 
   return (
