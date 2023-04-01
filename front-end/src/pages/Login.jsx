@@ -47,6 +47,7 @@ function LogIn() {
     const data = await response.json();
 
     const user = {
+      id: data.id,
       name: data.name,
       email: data.email,
       role: data.role,

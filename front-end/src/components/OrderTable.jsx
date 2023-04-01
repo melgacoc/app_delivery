@@ -11,7 +11,7 @@ import {
 import Context from '../context/Context';
 
 function OrderTable() {
-  const { globalCart, setTotalPrice } = useContext(Context);
+  const { globalCart, setTotalPrice, setGlobalCart } = useContext(Context);
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ function OrderTable() {
       .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
     const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
     setTotalPrice(fixedValue);
+    setGlobalCart(order);
   }, [order]);
 
   const handleRemove = (name) => {
