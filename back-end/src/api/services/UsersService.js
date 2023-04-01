@@ -40,7 +40,16 @@ const register = async (name, email, password) => {
   return createdUser.get({ plain: true });
 };
 
+const getSellers = async () => {
+  const sellers = await User.findAll({
+    where: { role: 'seller' },
+    raw: true,
+  });
+  return sellers;
+};
+
 module.exports = {
   login,
   register,
+  getSellers,
 };

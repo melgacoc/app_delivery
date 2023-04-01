@@ -26,7 +26,13 @@ const register = async (req, res) => {
   return res.status(201).json({ ...user, token });
 };
 
+const getSellers = async (req, res) => {
+  const sellers = await usersService.getSellers();
+  return res.status(200).json(sellers);
+};
+
 module.exports = {
   login,
   register,
+  getSellers,
 };

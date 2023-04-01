@@ -34,7 +34,7 @@ function OrderTable() {
       <tbody>
         <tr>
           {order.map(({ name, quantity, price }, index) => (
-            <td key={ index }>
+            <td key={ `${name}-${index}` }>
               <p data-testid={ `${ROUTE}${ITEM_NUM}${index}` }>
                 {index + 1}
               </p>
