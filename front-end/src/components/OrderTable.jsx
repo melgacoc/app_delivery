@@ -11,13 +11,25 @@ import {
 import Context from '../context/Context';
 
 function OrderTable() {
-  const { globalCart } = useContext(Context);
+  const { globalCart, setTotalPrice } = useContext(Context);
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
     const onlyOrder = globalCart.filter((product) => product.quantity > 0);
     setOrder(onlyOrder);
   }, []);
+
+  useEffect(() => {
+    const valueToUpdate = order
+      .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
+    setTotalPrice(fixedValue);
+  }, [order]);
+
+  const handleRemove = (name) => {
+    const newList = order.filter((product) => product.name !== name);
+    setOrder(newList);
+  };
 
   return (
     <table>
@@ -53,6 +65,7 @@ function OrderTable() {
               <button
                 type="button"
                 data-testid={ `${ROUTE}${REMOVE}${index}` }
+                onClick={ () => handleRemove(name) }
               >
                 Remover
               </button>
