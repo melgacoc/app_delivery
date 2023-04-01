@@ -22,6 +22,14 @@ const create = async (sale) => {
   return createdSale;
 };
 
+const getOrders = async (userId) => {
+  const orders = await Sale.findAll({
+    where: { userId },
+  });
+  return orders;
+};
+
 module.exports = {
   create,
+  getOrders,
 };

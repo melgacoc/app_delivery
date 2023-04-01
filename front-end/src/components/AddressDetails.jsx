@@ -30,7 +30,6 @@ function AddressDetails() {
       deliveryNumber: number,
       order: globalCart,
     };
-    console.log(requestBody);
 
     const response = await fetch(
       'http://localhost:3001/sales/new-order',
