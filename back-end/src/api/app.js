@@ -10,16 +10,6 @@ app.use(express.json());
 app.use(cors());
 
 app.use(express.static('public'));
-  
-app.use((req, res, next) => {
-  res.set({
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': '*',
-    'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-  });
-  next();
-});
 
 app.use('/users', usersRoutes);
 app.use('/products', productsRoutes);
