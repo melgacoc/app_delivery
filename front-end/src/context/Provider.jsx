@@ -6,6 +6,7 @@ function Provider({ children }) {
   const [products, setProducts] = useState([]);
   const [userName, setUserName] = useState('');
   const [globalCart, setGlobalCart] = useState([]);
+  const [totalPrice, setTotalPrice] = useState('0,00');
 
   const cartTotalValue = useCallback((cart) => {
     const totalValue = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
@@ -20,7 +21,9 @@ function Provider({ children }) {
     globalCart,
     setGlobalCart,
     cartTotalValue,
-  }), [products, userName, globalCart]);
+    totalPrice,
+    setTotalPrice,
+  }), [products, userName, globalCart, totalPrice]);
 
   const fetchProducts = async () => {
     const response = await fetch('http://localhost:3001/products');
