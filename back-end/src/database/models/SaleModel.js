@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     id: { type: DataTypes.INTEGER, allowNull: false, autoIncrement: true, primaryKey: true },
     userId: { type: DataTypes.INTEGER, allowNull: false, foreignKey: true },
     sellerId: { type: DataTypes.INTEGER, allowNull: false, foreignKey: true },
-    totalPrice: { type: DataTypes.INTEGER, allowNull: false },
+    totalPrice: { type: DataTypes.DECIMAL(9,2), allowNull: false },
     deliveryAddress: { type: DataTypes.STRING, allowNull: false },
     deliveryNumber: { type: DataTypes.STRING, allowNull: false },
     saleDate: { type: DataTypes.DATE, allowNull: false },
@@ -15,17 +15,17 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Sale.associate = (models) => {
-    models.User.belongsToMany(models.Sale, {
-      as: 'buyers',
-      through: Sale,
+    models.User.hasMany(models.Sale, {
+      as: 'buyer',
+      // through: Sale,
       foreignKey: 'userId',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',
     });
 
-    models.User.belongsToMany(models.Sale, {
-      as: 'sellers',
-      through: Sale,
+    models.User.hasMany(models.Sale, {
+      as: 'seller',
+      // through: Sale,
       foreignKey: 'sellerId',
       onUpdate: 'CASCADE',
       onDelete: 'CASCADE',

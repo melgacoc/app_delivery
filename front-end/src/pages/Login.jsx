@@ -15,6 +15,11 @@ function LogIn() {
   const history = useHistory();
 
   useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) history.push('/customer/products');
+  }, []);
+
+  useEffect(() => {
     const regex = /\S+@\S+\.\S+/;
     const passwordMin = 6;
     if (regex.test(email) && password.length >= passwordMin) {
@@ -47,6 +52,7 @@ function LogIn() {
     const data = await response.json();
 
     const user = {
+      id: data.id,
       name: data.name,
       email: data.email,
       role: data.role,

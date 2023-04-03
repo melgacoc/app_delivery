@@ -19,6 +19,7 @@ function ProductCard({ id, name, price, urlImage }) {
     const cartStorage = localStorage.getItem('cart')
       ? JSON.parse(localStorage.getItem('cart')) : [];
     const itemToUpdate = {
+      id,
       name,
       quantity,
       price: Number(price),
