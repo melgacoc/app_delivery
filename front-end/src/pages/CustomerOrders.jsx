@@ -7,34 +7,53 @@ import { ROUTE,
   STATUS,
   PRICE } from '../dataTestedId/CustomerOrdersIds';
 
+const DATE_CUT_LIMIT = 10;
+
 function CustomerOrders() {
   const { orders, fetchOrders } = useContext(Context);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     fetchOrders(user.id, user.token);
-    console.log(orders);
   }, []);
 
   return (
     <div>
       <ClientHeader />
-      {orders.map(({ id }, index) => (
+      {orders.length > 0
+      && orders.map(({ id, status, totalPrice, saleDate }, index) => (
         <div key={ index }>
           <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
-            {}
+            {id}
           </p>
           <p data-testid={ `${ROUTE}${STATUS}${id}` }>
-            {}
+            {status}
           </p>
           <p data-testid={ `${ROUTE}${DATE}${id}` }>
-            {}
+            {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
           </p>
           <p data-testid={ `${ROUTE}${PRICE}${id}` }>
-            {}
+            {totalPrice.replace('.', ',')}
           </p>
         </div>
       ))}
+      {/* {orders.map(({ id, status, totalPrice, saleDate }, index) => (
+        <div key={ index }>
+          <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
+            {id}
+          </p>
+          <p data-testid={ `${ROUTE}${STATUS}${id}` }>
+            {status}
+          </p>
+          <p data-testid={ `${ROUTE}${DATE}${id}` }>
+            {saleDate.toJSON().slice(0, DATE_CUT_LIMIT).split('-').reverse()
+                .join('/')}
+          </p>
+          <p data-testid={ `${ROUTE}${PRICE}${id}` }>
+            {totalPrice.toFixed(2).replace('.', ',')}
+          </p>
+        </div>
+      ))} */}
     </div>
   );
 }
