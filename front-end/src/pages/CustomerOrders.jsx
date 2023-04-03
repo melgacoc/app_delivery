@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ClientHeader from '../components/ClientHeader';
 import Context from '../context/Context';
 import { ROUTE,
@@ -22,38 +23,26 @@ function CustomerOrders() {
       <ClientHeader />
       {orders.length > 0
       && orders.map(({ id, status, totalPrice, saleDate }, index) => (
-        <div key={ index }>
-          <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
-            {id}
-          </p>
-          <p data-testid={ `${ROUTE}${STATUS}${id}` }>
-            {status}
-          </p>
-          <p data-testid={ `${ROUTE}${DATE}${id}` }>
-            {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
-          </p>
-          <p data-testid={ `${ROUTE}${PRICE}${id}` }>
-            {totalPrice.replace('.', ',')}
-          </p>
-        </div>
+        <Link
+          to={ `/customer/orders/${id}` }
+          key={ index }
+        >
+          <div>
+            <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
+              {id}
+            </p>
+            <p data-testid={ `${ROUTE}${STATUS}${id}` }>
+              {status}
+            </p>
+            <p data-testid={ `${ROUTE}${DATE}${id}` }>
+              {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
+            </p>
+            <p data-testid={ `${ROUTE}${PRICE}${id}` }>
+              {totalPrice.replace('.', ',')}
+            </p>
+          </div>
+        </Link>
       ))}
-      {/* {orders.map(({ id, status, totalPrice, saleDate }, index) => (
-        <div key={ index }>
-          <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
-            {id}
-          </p>
-          <p data-testid={ `${ROUTE}${STATUS}${id}` }>
-            {status}
-          </p>
-          <p data-testid={ `${ROUTE}${DATE}${id}` }>
-            {saleDate.toJSON().slice(0, DATE_CUT_LIMIT).split('-').reverse()
-                .join('/')}
-          </p>
-          <p data-testid={ `${ROUTE}${PRICE}${id}` }>
-            {totalPrice.toFixed(2).replace('.', ',')}
-          </p>
-        </div>
-      ))} */}
     </div>
   );
 }
