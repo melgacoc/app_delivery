@@ -5,6 +5,7 @@ const salesController = require('../controllers/SalesController');
 const salesRoutes = Router();
 
 salesRoutes.post('/new-order', salesController.create);
-salesRoutes.get('/:id', salesController.getOrders);
+salesRoutes.get('/:userid', salesController.getOrders);
+salesRoutes.get('/order/:id', salesController.getOrderById);
 
 module.exports = salesRoutes;

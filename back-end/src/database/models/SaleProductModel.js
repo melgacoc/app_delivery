@@ -19,6 +19,12 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
     });
 
+    models.SaleProduct.belongsTo(models.Product, {
+      as: 'product',
+      through: models.Product,
+      foreignKey: 'productId',
+    });
+
     models.Product.belongsToMany(models.Sale, {
       as: 'sales',
       through: SaleProduct,
