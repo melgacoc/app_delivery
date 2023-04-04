@@ -50,7 +50,12 @@ function LogIn() {
     );
 
     const data = await response.json();
-    if (data.message) return 0;
+
+    const NOT_FOUND_STATUS = 404;
+    if (response.status === NOT_FOUND_STATUS) {
+      setInvalidLogin(true);
+      return 0;
+    }
 
     const user = {
       id: data.id,
@@ -61,9 +66,7 @@ function LogIn() {
     };
     localStorage.setItem('user', JSON.stringify(user));
 
-    const NOT_FOUND_STATUS = 404;
     const OK_STATUS = 200;
-    if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
     if (response.status === OK_STATUS) {
       history.push('/customer/products');
     }
