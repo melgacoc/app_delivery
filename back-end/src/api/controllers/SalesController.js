@@ -23,9 +23,16 @@ const getOrdersBySeller = async (req, res) => {
   return res.status(200).json(orders);
 };
 
+const changeStatus = async (req, res) => {
+  const { id, status } = req.body;
+  const updatedOrder = await salesService.changeStatus(id, status);
+  return res.status(200).json(updatedOrder);
+};
+
 module.exports = {
   create,
   getOrders,
   getOrderById,
   getOrdersBySeller,
+  changeStatus,
 };

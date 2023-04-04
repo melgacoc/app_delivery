@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ClientHeader from '../components/ClientHeader';
-import OrderTable from '../components/OrderTable';
 import TotalPriceElement from '../components/TotalPriceElement';
-import { ROUTE } from '../dataTestedId/CustomerOrderDetailsIds';
-import OrderDetails from '../components/OrderDetails';
+import { ROUTE } from '../dataTestedId/SellerOrderDetailsIds';
 import Context from '../context/Context';
+import SellingOrderDetails from '../components/SellingOrderDetails';
+import SellerOrderTable from '../components/SellerOrderTable';
 
-function CustomerOrderDetails({ match }) {
+function SellerOrderDetails({ match }) {
   const { specificOrder, setSpecificOrder } = useContext(Context);
   const { params: { id } } = match;
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,6 @@ function CustomerOrderDetails({ match }) {
     const data = await response.json();
     setSpecificOrder(data);
     setLoading(false);
-    console.log(specificOrder);
   };
 
   useEffect(() => {
@@ -39,13 +38,13 @@ function CustomerOrderDetails({ match }) {
       <ClientHeader />
       {loading ? (<h1>Carregando...</h1>) : (
         <div>
-          <OrderDetails
+          <SellingOrderDetails
             id={ specificOrder.order.id }
             seller={ specificOrder.seller.name }
             saleDate={ specificOrder.order.saleDate }
             status={ specificOrder.order.status }
           />
-          <OrderTable testIdRoute={ ROUTE } products={ specificOrder.products } />
+          <SellerOrderTable testIdRoute={ ROUTE } products={ specificOrder.products } />
           <TotalPriceElement testIdRoute={ ROUTE } />
         </div>
       )}
@@ -53,8 +52,8 @@ function CustomerOrderDetails({ match }) {
   );
 }
 
-CustomerOrderDetails.propTypes = {
+SellerOrderDetails.propTypes = {
   params: PropTypes.object,
 }.isRequired;
 
-export default CustomerOrderDetails;
+export default SellerOrderDetails;

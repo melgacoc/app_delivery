@@ -10,12 +10,6 @@ import { ROUTE,
 const DATE_CUT_LIMIT = 10;
 
 function OrderDetails({ id, seller, saleDate, status }) {
-  // const [disabled, setDisabled] = useState(false);
-
-  // useEffect(() => {
-  //   if (status === 'Entregue') setDisabled(true);
-  // }, []);
-
   return (
     <div>
       <p data-testid={ `${ROUTE}${ORDER_ID}` }>
