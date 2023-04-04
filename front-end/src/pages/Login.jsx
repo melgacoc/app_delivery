@@ -15,7 +15,7 @@ function LogIn() {
   const history = useHistory();
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
     if (user) history.push('/customer/products');
   }, []);
 
@@ -50,6 +50,7 @@ function LogIn() {
     );
 
     const data = await response.json();
+    if (data.message) return 0;
 
     const user = {
       id: data.id,

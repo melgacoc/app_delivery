@@ -10,21 +10,32 @@ import {
 } from '../dataTestedId/CustomerCheckoutIds';
 import Context from '../context/Context';
 
-function OrderTable({ testIdRoute }) {
+function OrderTable({ testIdRoute, products }) {
   const { globalCart, setTotalPrice, setGlobalCart } = useContext(Context);
   const [order, setOrder] = useState([]);
 
   useEffect(() => {
-    const onlyOrder = globalCart.filter((product) => product.quantity > 0);
-    setOrder(onlyOrder);
+    if (products) {
+      const settedOrder = products.map((item) => ({
+        name: item.product.name,
+        quantity: item.quantity,
+        price: item.product.price,
+      }));
+      setOrder(settedOrder);
+    } else {
+      const onlyOrder = globalCart.filter((product) => product.quantity > 0);
+      setOrder(onlyOrder);
+    }
   }, []);
 
   useEffect(() => {
-    const valueToUpdate = order
-      .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
-    const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
-    setTotalPrice(fixedValue);
-    setGlobalCart(order);
+    if (!products) {
+      const valueToUpdate = order
+        .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+      const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
+      setTotalPrice(fixedValue);
+      setGlobalCart(order);
+    }
   }, [order]);
 
   const handleRemove = (name) => {
@@ -58,18 +69,19 @@ function OrderTable({ testIdRoute }) {
                 {quantity}
               </p>
               <p data-testid={ `${testIdRoute}${PRICE}${index}` }>
-                {price.toFixed(2).toString().replace('.', ',')}
+                {price.toString().replace('.', ',')}
               </p>
               <p data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }>
                 {(price * quantity).toFixed(2).toString().replace('.', ',')}
               </p>
-              <button
-                type="button"
-                data-testid={ `${testIdRoute}${REMOVE}${index}` }
-                onClick={ () => handleRemove(name) }
-              >
-                Remover
-              </button>
+              {!products && (
+                <button
+                  type="button"
+                  data-testid={ `${testIdRoute}${REMOVE}${index}` }
+                  onClick={ () => handleRemove(name) }
+                >
+                  Remover
+                </button>)}
             </td>))}
         </tr>
       </tbody>
