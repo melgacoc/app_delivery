@@ -15,6 +15,10 @@ function CustomerProducts() {
   const [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
+    document.title = 'Products - Delivery App';
+  }, []);
+
+  useEffect(() => {
     const valueToUpdate = globalCart
       .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
 

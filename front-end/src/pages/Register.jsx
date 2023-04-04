@@ -17,6 +17,10 @@ function Register() {
   const history = useHistory();
 
   useEffect(() => {
+    document.title = 'Register - Delivery App';
+  }, []);
+
+  useEffect(() => {
     const regex = /\S+@\S+\.\S+/;
     const passwordMin = 6;
     const validName = 12;
