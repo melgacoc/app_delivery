@@ -2,6 +2,14 @@ import PropTypes from 'prop-types';
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import Context from './Context';
 
+const HEADER = (token) => ({
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+  authorization: token,
+});
+
 function Provider({ children }) {
   const [products, setProducts] = useState([]);
   const [userName, setUserName] = useState('');
@@ -21,13 +29,7 @@ function Provider({ children }) {
       `http://localhost:3001/sales/${id}`,
       {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-          authorization: token,
-        },
+        headers: HEADER(token),
       },
     );
     const data = await response.json();
@@ -53,17 +55,24 @@ function Provider({ children }) {
       `http://localhost:3001/sales/seller/${id}`,
       {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
-          authorization: token,
-        },
+        headers: HEADER(token),
       },
     );
     const data = await response.json();
     setOrders(data);
+  };
+
+  const handleStatus = async (id, status, token) => {
+    const response = await fetch(
+      'http://localhost:3001/sales/status-change',
+      {
+        method: 'PUT',
+        headers: HEADER(token),
+        body: JSON.stringify({ id, status }),
+      },
+    );
+    const data = await response.json();
+    return data;
   };
 
   const contextValue = useMemo(() => ({
@@ -85,6 +94,7 @@ function Provider({ children }) {
     setSpecificOrder,
     fetchOrderById,
     fetchOrdersBySeller,
+    handleStatus,
   }), [products, userName, globalCart, totalPrice, sellers, orders, specificOrder]);
 
   const fetchProducts = async () => {
