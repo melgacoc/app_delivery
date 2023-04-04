@@ -2,21 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ROUTE,
   ORDER_ID,
-  SELLER,
   DATE,
   STATUS,
-  CHECK } from '../dataTestedId/CustomerOrderDetailsIds';
+  PREPARING,
+  DISPATCH } from '../dataTestedId/SellerOrderDetailsIds';
 
 const DATE_CUT_LIMIT = 10;
 
-function OrderDetails({ id, seller, saleDate, status }) {
+function SellingOrderDetails({ id, saleDate, status }) {
   return (
     <div>
       <p data-testid={ `${ROUTE}${ORDER_ID}` }>
         {id}
-      </p>
-      <p data-testid={ `${ROUTE}${SELLER}` }>
-        {seller}
       </p>
       <p data-testid={ `${ROUTE}${DATE}` }>
         {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
@@ -26,18 +23,24 @@ function OrderDetails({ id, seller, saleDate, status }) {
       </p>
       <button
         type="button"
-        data-testid={ `${ROUTE}${CHECK}` }
+        data-testid={ `${ROUTE}${PREPARING}` }
+      >
+        Preparar pedido
+      </button>
+      <button
+        type="button"
+        data-testid={ `${ROUTE}${DISPATCH}` }
         disabled
       >
-        Marcar como entregue
+        Saiu para entrega
       </button>
     </div>
   );
 }
 
-OrderDetails.propTypes = {
+SellingOrderDetails.propTypes = {
   id: PropTypes.number,
   seller: PropTypes.string,
 }.isRequired;
 
-export default OrderDetails;
+export default SellingOrderDetails;

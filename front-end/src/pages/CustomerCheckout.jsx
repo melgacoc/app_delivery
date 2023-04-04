@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ClientHeader from '../components/ClientHeader';
 import OrderTable from '../components/OrderTable';
 import TotalPriceElement from '../components/TotalPriceElement';
