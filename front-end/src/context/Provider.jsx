@@ -9,6 +9,7 @@ function Provider({ children }) {
   const [totalPrice, setTotalPrice] = useState('0,00');
   const [sellers, setSellers] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [specificOrder, setSpecificOrder] = useState();
 
   const cartTotalValue = useCallback((cart) => {
     const totalValue = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
@@ -18,6 +19,38 @@ function Provider({ children }) {
   const fetchOrders = async (id, token) => {
     const response = await fetch(
       `http://localhost:3001/sales/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+          authorization: token,
+        },
+      },
+    );
+    const data = await response.json();
+    setOrders(data);
+  };
+
+  const fetchOrderById = async (id, token) => {
+    const response = await fetch(
+      `http://localhost:3001/sales/order/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          authorization: token,
+        },
+      },
+    );
+    const data = await response.json();
+    setSpecificOrder(data);
+  };
+
+  const fetchOrdersBySeller = async (id, token) => {
+    const response = await fetch(
+      `http://localhost:3001/sales/seller/${id}`,
       {
         method: 'GET',
         headers: {
@@ -48,7 +81,11 @@ function Provider({ children }) {
     orders,
     setOrders,
     fetchOrders,
-  }), [products, userName, globalCart, totalPrice, sellers, orders]);
+    specificOrder,
+    setSpecificOrder,
+    fetchOrderById,
+    fetchOrdersBySeller,
+  }), [products, userName, globalCart, totalPrice, sellers, orders, specificOrder]);
 
   const fetchProducts = async () => {
     const response = await fetch('http://localhost:3001/products');

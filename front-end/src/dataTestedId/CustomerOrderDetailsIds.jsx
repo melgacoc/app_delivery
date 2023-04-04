@@ -1,4 +1,4 @@
-const ROUTE = 'customer_order-details__';
+const ROUTE = 'customer_order_details__';
 const ORDER_ID = 'element-order-details-label-order-id';
 const SELLER = 'element-order-details-label-seller-name';
 const DATE = 'element-order-details-label-order-date';

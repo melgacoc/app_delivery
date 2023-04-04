@@ -15,7 +15,7 @@ function LogIn() {
   const history = useHistory();
 
   useEffect(() => {
-    const user = localStorage.getItem('user');
+    const user = JSON.parse(localStorage.getItem('user'));
     if (user) history.push('/customer/products');
   }, []);
 
@@ -51,6 +51,12 @@ function LogIn() {
 
     const data = await response.json();
 
+    const NOT_FOUND_STATUS = 404;
+    if (response.status === NOT_FOUND_STATUS) {
+      setInvalidLogin(true);
+      return 0;
+    }
+
     const user = {
       id: data.id,
       name: data.name,
@@ -60,11 +66,13 @@ function LogIn() {
     };
     localStorage.setItem('user', JSON.stringify(user));
 
-    const NOT_FOUND_STATUS = 404;
     const OK_STATUS = 200;
-    if (response.status === NOT_FOUND_STATUS) setInvalidLogin(true);
     if (response.status === OK_STATUS) {
-      history.push('/customer/products');
+      if (user.role === 'seller') {
+        history.push('/seller/orders');
+      } else {
+        history.push('/customer/products');
+      }
     }
   };
 
