@@ -8,6 +8,7 @@ import {
   BTN_CART,
   CHECKOUT,
 } from '../dataTestedId/CustomerProductsIds';
+import '../styles/CostumerProducts.css'
 
 function CustomerProducts() {
   const { products, globalCart, totalPrice, setTotalPrice } = useContext(Context);
@@ -39,6 +40,8 @@ function CustomerProducts() {
       <p data-testid={ `${ROUTE}${CHECKOUT}` }>
         {totalPrice}
       </p>
+      <section className="cardContainer">
+        <div>
       {products.map(({ id, name, price, urlImage }) => (
         <ProductCard
           key={ id }
@@ -48,6 +51,8 @@ function CustomerProducts() {
           urlImage={ urlImage }
         />
       ))}
+        </div>
+      </section>
     </div>
   );
 }

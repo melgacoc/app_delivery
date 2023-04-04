@@ -6,12 +6,14 @@ import { ROUTE,
   BUTTON,
   REGISTER,
   INVALID } from '../dataTestedId/logInIds';
+import '../styles/logIn.css';
 
 function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
   const [invalidLogin, setInvalidLogin] = useState(false);
+  const [background, setBackground] = useState('containerLogin');
   const history = useHistory();
 
   useEffect(() => {
@@ -20,6 +22,7 @@ function LogIn() {
   }, []);
 
   useEffect(() => {
+   
     const regex = /\S+@\S+\.\S+/;
     const passwordMin = 6;
     if (regex.test(email) && password.length >= passwordMin) {
@@ -54,6 +57,7 @@ function LogIn() {
     const NOT_FOUND_STATUS = 404;
     if (response.status === NOT_FOUND_STATUS) {
       setInvalidLogin(true);
+      setBackground('containerError');
       return 0;
     }
 
@@ -77,12 +81,14 @@ function LogIn() {
   };
 
   return (
-    <div className="logInContainer">
+    <div className="body"
+    >
       <section className="logInLogo">
         <img src="" alt="" />
       </section>
-      <section>
-        <label htmlFor="email">
+      <section className={background}>
+        <label htmlFor="email"
+        className="container">
           Email
           <input
             data-testid={ `${ROUTE}${EMAIL}` }
@@ -94,7 +100,8 @@ function LogIn() {
             onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
-        <label htmlFor="password">
+        <label htmlFor="password"
+        className="container">
           Password
           <input
             data-testid={ `${ROUTE}${PASSWORD}` }
@@ -106,7 +113,9 @@ function LogIn() {
             onChange={ ({ target }) => setPassword(target.value) }
           />
         </label>
+        <div className="containerBtn">
         <button
+          className="btn btn-success"
           data-testid={ `${ROUTE}${BUTTON}` }
           type="submit"
           id="subButton"
@@ -119,6 +128,7 @@ function LogIn() {
         </button>
         <Link to="/register">
           <button
+            className="btn btn-outline-success"
             data-testid={ `${ROUTE}${REGISTER}` }
             name="registerButton"
             id="registerButton"
@@ -127,10 +137,11 @@ function LogIn() {
             Ainda não tenho conta
           </button>
         </Link>
+        </div>
       </section>
       {' '}
       {
-        invalidLogin && (
+        invalidLogin  && (
           <section>
             <div
               data-testid={ `${ROUTE}${INVALID}` }

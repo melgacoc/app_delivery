@@ -10,6 +10,7 @@ import {
   INPUT,
 } from '../dataTestedId/CustomerProductsIds';
 import Context from '../context/Context';
+import '../styles/ProductCard.css'
 
 function ProductCard({ id, name, price, urlImage }) {
   const { setGlobalCart } = useContext(Context);
@@ -47,17 +48,28 @@ function ProductCard({ id, name, price, urlImage }) {
   }, [quantity]);
 
   return (
-    <div>
-      <p data-testid={ `${ROUTE}${TITLE}${id}` }>{name}</p>
-      <p data-testid={ `${ROUTE}${PRICE}${id}` }>{price.replace('.', ',')}</p>
+    <div className="card">
+      <p 
+        className="price"
+      data-testid={ `${ROUTE}${PRICE}${id}` }
+      >
+        {price.replace('.', ',')}
+      </p>
       <img
+        className="img"
         alt={ name }
         src={ urlImage }
-        width="50px"
-        height="50px"
         data-testid={ `${ROUTE}${IMAGE}${id}` }
       />
+      <p
+        className="name"
+      data-testid={ `${ROUTE}${TITLE}${id}` }
+      >
+        {name}
+      </p>
+      <section className="tableBtn">
       <button
+        className="addRmvBtn"
         type="button"
         onClick={ handleDecrement }
         data-testid={ `${ROUTE}${RM_BTN}${id}` }
@@ -65,18 +77,20 @@ function ProductCard({ id, name, price, urlImage }) {
         -
       </button>
       <input
-        type="number"
+        className="input"
         value={ quantity }
         onChange={ handleQuantity }
         data-testid={ `${ROUTE}${INPUT}${id}` }
       />
       <button
+        className="addRmvBtn"
         type="button"
         onClick={ handleIncrement }
         data-testid={ `${ROUTE}${ADD_BTN}${id}` }
       >
         +
       </button>
+      </section>
     </div>
   );
 }

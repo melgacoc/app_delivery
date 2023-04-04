@@ -6,6 +6,7 @@ import { ROUTE,
   PASSWORD,
   BUTTON,
   INVALID } from '../dataTestedId/registerIds';
+import '../styles/register.css';
 
 function Register() {
   const [name, setName] = useState('');
@@ -68,8 +69,14 @@ function Register() {
   };
 
   return (
-    <div>
-      <label htmlFor="name">
+    <div
+    className="body">
+      <section
+      className="containerLogin"
+      >
+      <label htmlFor="name"
+      className="container"
+      >
         Nome
         <input
           data-testid={ `${ROUTE}${NAME}` }
@@ -81,7 +88,8 @@ function Register() {
           onChange={ ({ target }) => setName(target.value) }
         />
       </label>
-      <label htmlFor="email">
+      <label htmlFor="email"
+      className="container">
         Email
         <input
           data-testid={ `${ROUTE}${EMAIL}` }
@@ -93,7 +101,8 @@ function Register() {
           onChange={ ({ target }) => setEmail(target.value) }
         />
       </label>
-      <label htmlFor="password">
+      <label htmlFor="password"
+      className="container">
         Password
         <input
           data-testid={ `${ROUTE}${PASSWORD}` }
@@ -106,6 +115,7 @@ function Register() {
         />
       </label>
       <button
+       className="btn btn-success"
         data-testid={ `${ROUTE}${BUTTON}` }
         type="button"
         id="subButton"
@@ -116,6 +126,7 @@ function Register() {
       >
         Cadastrar
       </button>
+      </section>
       {
         invalidRegister ? (
           <div
