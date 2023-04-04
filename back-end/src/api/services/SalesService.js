@@ -54,9 +54,22 @@ const getOrdersBySeller = async (sellerId) => {
   return orders;
 };
 
+const changeStatus = async (id, status) => {
+  await Sale.update(
+    { status },
+    { where: { id } },
+  );
+
+  const order = await Sale.findOne({
+    where: { id },
+  });
+  return order;
+};
+
 module.exports = {
   create,
   getOrders,
   getOrderById,
   getOrdersBySeller,
+  changeStatus,
 };

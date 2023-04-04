@@ -8,5 +8,6 @@ salesRoutes.post('/new-order', salesController.create);
 salesRoutes.get('/:userid', salesController.getOrders);
 salesRoutes.get('/order/:id', salesController.getOrderById);
 salesRoutes.get('/seller/:id', salesController.getOrdersBySeller);
+salesRoutes.put('/status-change', salesController.changeStatus);
 
 module.exports = salesRoutes;

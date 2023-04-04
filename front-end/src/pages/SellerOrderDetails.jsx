@@ -25,14 +25,12 @@ function SellerOrderDetails({ match }) {
     const data = await response.json();
     setSpecificOrder(data);
     setLoading(false);
-    console.log(specificOrder);
   };
 
   useEffect(() => {
     document.title = 'Order Details - Delivery App';
     const user = JSON.parse(localStorage.getItem('user'));
     fetchOrderById(id, user.token);
-    console.log(specificOrder);
   }, []);
 
   return (
