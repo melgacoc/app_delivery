@@ -15,6 +15,7 @@ function SellerOrders() {
   const { orders, fetchOrdersBySeller } = useContext(Context);
 
   useEffect(() => {
+    document.title = 'Orders - Delivery App';
     const user = JSON.parse(localStorage.getItem('user'));
     fetchOrdersBySeller(user.id, user.token);
   }, []);
