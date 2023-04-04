@@ -29,6 +29,7 @@ function CustomerOrderDetails({ match }) {
   };
 
   useEffect(() => {
+    document.title = 'Order Details - Delivery App';
     const user = JSON.parse(localStorage.getItem('user'));
     fetchOrderById(id, user.token);
   }, []);

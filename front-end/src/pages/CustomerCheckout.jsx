@@ -8,6 +8,10 @@ import {
 } from '../dataTestedId/CustomerCheckoutIds';
 
 function CustomerCheckout() {
+  useEffect(() => {
+    document.title = 'Checkout - Delivery App';
+  }, []);
+
   return (
     <div>
       <ClientHeader />
