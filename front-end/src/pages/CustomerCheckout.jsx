@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import ClientHeader from '../components/ClientHeader';
+import Header from '../components/Header';
 import OrderTable from '../components/OrderTable';
 import TotalPriceElement from '../components/TotalPriceElement';
 import AddressDetails from '../components/AddressDetails';
@@ -14,7 +14,7 @@ function CustomerCheckout() {
 
   return (
     <div>
-      <ClientHeader />
+      <Header />
       <OrderTable testIdRoute={ ROUTE } />
       <TotalPriceElement testIdRoute={ ROUTE } />
       <AddressDetails />

@@ -1,23 +1,25 @@
-import React, { useContext, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   ROUTE,
-  HEADER_PRODUCTS,
-  HEADER_ORDERS,
   HEADER_NAME,
   HEADER_LOGOUT,
 } from '../dataTestedId/clientHeaderIds';
 import Context from '../context/Context';
+import LeftSellerHeader from './LeftSellerHeader';
+import LeftCustomerHeader from './LeftCustomerHeader';
 
-function ClientHeader() {
+function Header() {
   const history = useHistory();
   const { userName, setUserName } = useContext(Context);
+  const [role, setRole] = useState();
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user.token) history.push('/login');
 
     setUserName(user.name);
+    setRole(user.role);
   }, []);
 
   const handleLogOut = () => {
@@ -27,20 +29,8 @@ function ClientHeader() {
 
   return (
     <div>
-      <Link to="/customer/products">
-        <p
-          data-testid={ `${ROUTE}${HEADER_PRODUCTS}` }
-        >
-          Produtos
-        </p>
-      </Link>
-      <Link to="/customer/orders">
-        <p
-          data-testid={ `${ROUTE}${HEADER_ORDERS}` }
-        >
-          Meus Pedidos
-        </p>
-      </Link>
+      {role === 'seller' && <LeftSellerHeader />}
+      {role === 'customer' && <LeftCustomerHeader />}
       <p
         data-testid={ `${ROUTE}${HEADER_NAME}` }
       >
@@ -59,4 +49,4 @@ function ClientHeader() {
   );
 }
 
-export default ClientHeader;
+export default Header;

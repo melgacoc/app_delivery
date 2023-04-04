@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ClientHeader from '../components/ClientHeader';
+import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import Context from '../context/Context';
 import {
@@ -30,7 +30,7 @@ function CustomerProducts() {
 
   return (
     <div>
-      <ClientHeader />
+      <Header />
       <Link to="/customer/checkout">
         <button
           type="button"
