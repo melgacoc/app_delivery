@@ -68,7 +68,11 @@ function LogIn() {
 
     const OK_STATUS = 200;
     if (response.status === OK_STATUS) {
-      history.push('/customer/products');
+      if (user.role === 'seller') {
+        history.push('/seller/orders');
+      } else {
+        history.push('/customer/products');
+      }
     }
   };
 

@@ -48,6 +48,24 @@ function Provider({ children }) {
     setSpecificOrder(data);
   };
 
+  const fetchOrdersBySeller = async (id, token) => {
+    const response = await fetch(
+      `http://localhost:3001/sales/seller/${id}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+          'Access-Control-Allow-Methods': 'POST, PUT, PATCH, GET, DELETE, OPTIONS',
+          authorization: token,
+        },
+      },
+    );
+    const data = await response.json();
+    setOrders(data);
+  };
+
   const contextValue = useMemo(() => ({
     products,
     setProducts,
@@ -66,6 +84,7 @@ function Provider({ children }) {
     specificOrder,
     setSpecificOrder,
     fetchOrderById,
+    fetchOrdersBySeller,
   }), [products, userName, globalCart, totalPrice, sellers, orders, specificOrder]);
 
   const fetchProducts = async () => {

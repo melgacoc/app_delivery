@@ -7,6 +7,7 @@ import CustomerProducts from './pages/CustomerProducts';
 import CustomerCheckout from './pages/CustomerCheckout';
 import CustomerOrderDetails from './pages/CustomerOrderDetails';
 import CustomerOrders from './pages/CustomerOrders';
+import SellerOrders from './pages/SellerOrders';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/customer/checkout" component={ CustomerCheckout } />
       <Route path="/customer/orders/:id" component={ CustomerOrderDetails } />
       <Route path="/customer/orders" component={ CustomerOrders } />
+      <Route path="/seller/orders" component={ SellerOrders } />
     </Switch>
   );
 }
