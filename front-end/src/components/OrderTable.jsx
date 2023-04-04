@@ -19,7 +19,7 @@ function OrderTable({ testIdRoute, products }) {
       const settedOrder = products.map((item) => ({
         name: item.product.name,
         quantity: item.quantity,
-        price: item.product.price,
+        price: Number(item.product.price),
       }));
       setOrder(settedOrder);
     } else {
@@ -69,7 +69,7 @@ function OrderTable({ testIdRoute, products }) {
                 {quantity}
               </p>
               <p data-testid={ `${testIdRoute}${PRICE}${index}` }>
-                {price.toString().replace('.', ',')}
+                {price.toFixed(2).toString().replace('.', ',')}
               </p>
               <p data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }>
                 {(price * quantity).toFixed(2).toString().replace('.', ',')}
