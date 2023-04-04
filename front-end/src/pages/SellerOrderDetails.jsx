@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import ClientHeader from '../components/ClientHeader';
+import Header from '../components/Header';
 import TotalPriceElement from '../components/TotalPriceElement';
 import { ROUTE } from '../dataTestedId/SellerOrderDetailsIds';
 import Context from '../context/Context';
@@ -35,7 +35,7 @@ function SellerOrderDetails({ match }) {
 
   return (
     <div>
-      <ClientHeader />
+      <Header />
       {loading ? (<h1>Carregando...</h1>) : (
         <div>
           <SellingOrderDetails

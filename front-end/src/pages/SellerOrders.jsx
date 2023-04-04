@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import ClientHeader from '../components/ClientHeader';
+import Header from '../components/Header';
 import Context from '../context/Context';
 import { ROUTE,
   ORDER_ID,
@@ -22,7 +22,7 @@ function SellerOrders() {
 
   return (
     <div>
-      <ClientHeader />
+      <Header />
       {orders.length > 0
       && orders.map(({ id,
         status,
