@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ROUTE,
   ORDER_ID,
@@ -10,11 +10,11 @@ import { ROUTE,
 const DATE_CUT_LIMIT = 10;
 
 function OrderDetails({ id, seller, saleDate, status }) {
-  const [disabled, setDisabled] = useState(false);
+  // const [disabled, setDisabled] = useState(false);
 
-  useEffect(() => {
-    if (status === 'Entregue') setDisabled(true);
-  }, []);
+  // useEffect(() => {
+  //   if (status === 'Entregue') setDisabled(true);
+  // }, []);
 
   return (
     <div>
@@ -33,7 +33,7 @@ function OrderDetails({ id, seller, saleDate, status }) {
       <button
         type="button"
         data-testid={ `${ROUTE}${CHECK}` }
-        disabled={ disabled }
+        disabled
       >
         Marcar como entregue
       </button>
