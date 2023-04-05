@@ -23,7 +23,6 @@ function LogIn() {
   }, []);
 
   useEffect(() => {
-   
     const regex = /\S+@\S+\.\S+/;
     const passwordMin = 6;
     if (regex.test(email) && password.length >= passwordMin) {
@@ -82,14 +81,17 @@ function LogIn() {
   };
 
   return (
-    <div className="body"
+    <div
+      className="body"
     >
       <section className="logInLogo">
         <img src="" alt="" />
       </section>
-      <section className={background}>
-        <label htmlFor="email"
-        className="container">
+      <section className={ background }>
+        <label
+          htmlFor="email"
+          className="container"
+        >
           Email
           <input
             data-testid={ `${ROUTE}${EMAIL}` }
@@ -101,8 +103,10 @@ function LogIn() {
             onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
-        <label htmlFor="password"
-        className="container">
+        <label
+          htmlFor="password"
+          className="container"
+        >
           Password
           <input
             data-testid={ `${ROUTE}${PASSWORD}` }
@@ -115,34 +119,34 @@ function LogIn() {
           />
         </label>
         <div className="containerBtn">
-        <button
-          className="btn btn-success"
-          data-testid={ `${ROUTE}${BUTTON}` }
-          type="submit"
-          id="subButton"
-          name="subButton"
-          onClick={ handleSubmit }
-          placeholder="Entrar"
-          disabled={ disableButton }
-        >
-          Entrar
-        </button>
-        <Link to="/register">
           <button
-            className="btn btn-outline-success"
-            data-testid={ `${ROUTE}${REGISTER}` }
-            name="registerButton"
-            id="registerButton"
-            type="button"
+            className="btn btn-success"
+            data-testid={ `${ROUTE}${BUTTON}` }
+            type="submit"
+            id="subButton"
+            name="subButton"
+            onClick={ handleSubmit }
+            placeholder="Entrar"
+            disabled={ disableButton }
           >
-            Ainda não tenho conta
+            Entrar
           </button>
-        </Link>
+          <Link to="/register">
+            <button
+              className="btn btn-outline-success"
+              data-testid={ `${ROUTE}${REGISTER}` }
+              name="registerButton"
+              id="registerButton"
+              type="button"
+            >
+              Ainda não tenho conta
+            </button>
+          </Link>
         </div>
       </section>
       {' '}
       {
-        invalidLogin  && (
+        invalidLogin && (
           <section>
             <div
               data-testid={ `${ROUTE}${INVALID}` }

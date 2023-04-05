@@ -10,7 +10,7 @@ import {
   INPUT,
 } from '../dataTestedId/CustomerProductsIds';
 import Context from '../context/Context';
-import '../styles/ProductCard.css'
+import '../styles/ProductCard.css';
 
 function ProductCard({ id, name, price, urlImage }) {
   const { setGlobalCart } = useContext(Context);
@@ -49,9 +49,9 @@ function ProductCard({ id, name, price, urlImage }) {
 
   return (
     <div className="card">
-      <p 
+      <p
         className="price"
-      data-testid={ `${ROUTE}${PRICE}${id}` }
+        data-testid={ `${ROUTE}${PRICE}${id}` }
       >
         {price.replace('.', ',')}
       </p>
@@ -63,33 +63,33 @@ function ProductCard({ id, name, price, urlImage }) {
       />
       <p
         className="name"
-      data-testid={ `${ROUTE}${TITLE}${id}` }
+        data-testid={ `${ROUTE}${TITLE}${id}` }
       >
         {name}
       </p>
       <section className="tableBtn">
-      <button
-        className="addRmvBtn"
-        type="button"
-        onClick={ handleDecrement }
-        data-testid={ `${ROUTE}${RM_BTN}${id}` }
-      >
-        -
-      </button>
-      <input
-        className="input"
-        value={ quantity }
-        onChange={ handleQuantity }
-        data-testid={ `${ROUTE}${INPUT}${id}` }
-      />
-      <button
-        className="addRmvBtn"
-        type="button"
-        onClick={ handleIncrement }
-        data-testid={ `${ROUTE}${ADD_BTN}${id}` }
-      >
-        +
-      </button>
+        <button
+          className="addRmvBtn"
+          type="button"
+          onClick={ handleDecrement }
+          data-testid={ `${ROUTE}${RM_BTN}${id}` }
+        >
+          -
+        </button>
+        <input
+          className="input"
+          value={ quantity }
+          onChange={ handleQuantity }
+          data-testid={ `${ROUTE}${INPUT}${id}` }
+        />
+        <button
+          className="addRmvBtn"
+          type="button"
+          onClick={ handleIncrement }
+          data-testid={ `${ROUTE}${ADD_BTN}${id}` }
+        >
+          +
+        </button>
       </section>
     </div>
   );

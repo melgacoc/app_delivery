@@ -74,62 +74,68 @@ function Register() {
 
   return (
     <div
-    className="body">
+      className="body"
+    >
       <section
-      className="containerLogin"
+        className="containerLogin"
       >
-      <label htmlFor="name"
-      className="container"
-      >
-        Nome
-        <input
-          data-testid={ `${ROUTE}${NAME}` }
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Nome"
-          value={ name }
-          onChange={ ({ target }) => setName(target.value) }
-        />
-      </label>
-      <label htmlFor="email"
-      className="container">
-        Email
-        <input
-          data-testid={ `${ROUTE}${EMAIL}` }
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          value={ email }
-          onChange={ ({ target }) => setEmail(target.value) }
-        />
-      </label>
-      <label htmlFor="password"
-      className="container">
-        Password
-        <input
-          data-testid={ `${ROUTE}${PASSWORD}` }
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          value={ password }
-          onChange={ ({ target }) => setPassword(target.value) }
-        />
-      </label>
-      <button
-       className="btn btn-success"
-        data-testid={ `${ROUTE}${BUTTON}` }
-        type="button"
-        id="subButton"
-        name="subButton"
-        placeholder="Entrar"
-        disabled={ disableButton }
-        onClick={ handleSubmit }
-      >
-        Cadastrar
-      </button>
+        <label
+          htmlFor="name"
+          className="container"
+        >
+          Nome
+          <input
+            data-testid={ `${ROUTE}${NAME}` }
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nome"
+            value={ name }
+            onChange={ ({ target }) => setName(target.value) }
+          />
+        </label>
+        <label
+          htmlFor="email"
+          className="container"
+        >
+          Email
+          <input
+            data-testid={ `${ROUTE}${EMAIL}` }
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            value={ email }
+            onChange={ ({ target }) => setEmail(target.value) }
+          />
+        </label>
+        <label
+          htmlFor="password"
+          className="container"
+        >
+          Password
+          <input
+            data-testid={ `${ROUTE}${PASSWORD}` }
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+            value={ password }
+            onChange={ ({ target }) => setPassword(target.value) }
+          />
+        </label>
+        <button
+          className="btn btn-success"
+          data-testid={ `${ROUTE}${BUTTON}` }
+          type="button"
+          id="subButton"
+          name="subButton"
+          placeholder="Entrar"
+          disabled={ disableButton }
+          onClick={ handleSubmit }
+        >
+          Cadastrar
+        </button>
       </section>
       {
         invalidRegister ? (
