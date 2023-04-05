@@ -48,7 +48,7 @@ function ProductCard({ id, name, price, urlImage }) {
   }, [quantity]);
 
   return (
-    <div className="card">
+    <div className="ProductCard-card">
       <p
         className="price"
         data-testid={ `${ROUTE}${PRICE}${id}` }
@@ -56,7 +56,7 @@ function ProductCard({ id, name, price, urlImage }) {
         {price.replace('.', ',')}
       </p>
       <img
-        className="img"
+        className="ProductCard-img"
         alt={ name }
         src={ urlImage }
         data-testid={ `${ROUTE}${IMAGE}${id}` }
@@ -67,7 +67,7 @@ function ProductCard({ id, name, price, urlImage }) {
       >
         {name}
       </p>
-      <section className="tableBtn">
+      <section className="ProductCard-tableBtn">
         <button
           className="addRmvBtn"
           type="button"

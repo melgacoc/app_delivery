@@ -32,20 +32,25 @@ function CustomerProducts() {
   return (
     <div>
       <Header />
-      <Link to="/customer/checkout">
-        <button
-          type="button"
-          data-testid={ `${ROUTE}${BTN_CART}` }
-          disabled={ disabled }
+      <section className="CustomerProducts-cart-container">
+        <Link
+          to="/customer/checkout"
+          className="CustomerProducts-cart-link"
         >
-          CARRINHO
-        </button>
-      </Link>
-      <p data-testid={ `${ROUTE}${CHECKOUT}` }>
-        {totalPrice}
-      </p>
-      <section className="cardContainer">
-        <div>
+          <button
+            type="button"
+            data-testid={ `${ROUTE}${BTN_CART}` }
+            disabled={ disabled }
+          >
+            CARRINHO
+          </button>
+          <p data-testid={ `${ROUTE}${CHECKOUT}` }>
+            {totalPrice}
+          </p>
+        </Link>
+      </section>
+      <section className="CustomerProducts-cardContainer">
+        <div className="CustomerProducts-sub-container">
           {products.map(({ id, name, price, urlImage }) => (
             <ProductCard
               key={ id }

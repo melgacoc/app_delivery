@@ -1,4 +1,4 @@
-.img {
+/* .img {
 	width: 110px;
 	height: 175px;
 	display: flex;
@@ -52,4 +52,22 @@
 	width: 30px;
 	height: 30px;
 	align-items: center;
+} */
+
+.ProductCard-img {
+	width: 50%;
+}
+
+.ProductCard-card {
+	border: red solid 1px;
+	display: flex;
+	flex-direction: column;
+	max-height: 540px;
+	max-width: 360px;
+	margin: 10px;
+}
+
+.ProductCard-tableBtn {
+	display: flex;
+	border: blue solid 1px;
 }
