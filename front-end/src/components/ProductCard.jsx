@@ -62,14 +62,14 @@ function ProductCard({ id, name, price, urlImage }) {
         data-testid={ `${ROUTE}${IMAGE}${id}` }
       />
       <p
-        className="name"
+        className="ProductCard-name"
         data-testid={ `${ROUTE}${TITLE}${id}` }
       >
         {name}
       </p>
       <section className="ProductCard-tableBtn">
         <button
-          className="addRmvBtn"
+          className="ProductCard-btn-minus"
           type="button"
           onClick={ handleDecrement }
           data-testid={ `${ROUTE}${RM_BTN}${id}` }
@@ -83,7 +83,7 @@ function ProductCard({ id, name, price, urlImage }) {
           data-testid={ `${ROUTE}${INPUT}${id}` }
         />
         <button
-          className="addRmvBtn"
+          className="ProductCard-btn-plus"
           type="button"
           onClick={ handleIncrement }
           data-testid={ `${ROUTE}${ADD_BTN}${id}` }

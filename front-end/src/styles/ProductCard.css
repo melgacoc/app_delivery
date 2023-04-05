@@ -63,16 +63,64 @@
   flex-direction: column;
   height: 400px;
   justify-content: flex-end;
-  margin: 10px;
-  width: 300px;
+  margin-left: 4%;
+  margin-top: 2%;
+  width: 20%;
 }
 
 .ProductCard-img {
   border: red solid 1px;
+  margin-bottom: 15%;
   width: 60%;
 }
 
-.ProductCard-tableBtn {
-  border: blue solid 1px;
+.ProductCard-name {
+  align-items: center;
+  background-color: #b1c2be;
   display: flex;
+  font-size: 16px;
+  font-weight: 500;
+  height: 10%;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.ProductCard-tableBtn {
+  align-items: center;
+  background-color: #b1c2be;
+  display: flex;
+  height: 15%;
+  justify-content: center;
+  width: 100%;
+}
+
+.ProductCard-tableBtn button, input {
+  height: 40px;
+  text-align: center;
+  width: 40px;
+}
+
+.ProductCard-tableBtn button {
+  background-color: #036b52;
+  border: 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ProductCard-tableBtn input {
+  border: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ProductCard-btn-minus {
+  border-radius: 10px 0 0 10px;
+}
+
+.ProductCard-btn-plus {
+  border-radius: 0 10px 10px 0;
 }
