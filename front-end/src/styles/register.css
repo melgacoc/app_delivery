@@ -1,36 +1,37 @@
-.body{
-  width: auto;
-  height: auto;
+.body {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: auto;
   margin-top: 26%;
+  width: auto;
 }
+
 .container {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   margin: 5px;
   padding: 5px;
 }
 
 .containerLogin {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-color: rgb(218, 226, 223);
-  width: 300px;
-  height: 300px;
   border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: center;
+  width: 300px;
 }
 
 .containerBtn {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   margin: 5px;
   padding: 10px;
 }

@@ -3,7 +3,7 @@
   max-width: 100%;
   height: 1000px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   border: 1px solid black;
   align-items: center;
@@ -12,14 +12,14 @@
 .CustomerProducts-cardContainer > div {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px; 
+  grid-gap: 20px;
 } */
 
 .CustomerProducts-cardContainer {
+  align-items: center;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100vw;
+  width: 100%;
 }
 
 .CustomerProducts-sub-container {
@@ -30,35 +30,35 @@
 }
 
 .CustomerProducts-cart-container {
-  height: 100px;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  display: flex;
+  height: 100px;
+  justify-content: center;
 }
 
 .CustomerProducts-cart-link {
-  display: flex;
-  width: 250px;
-  height: 90%;
-  justify-content: center;
   align-items: center;
-  background-color: #036B52;
+  background-color: #036b52;
   border-radius: 10px;
   color: white;
+  display: flex;
+  height: 90%;
+  justify-content: center;
+  width: 250px;
 }
 
 .CustomerProducts-cart-link button {
-  color: white;
-  background-color: #036B52;
+  background-color: #036b52;
   border: 0;
+  color: white;
   font-size: 24px;
 }
 
 .CustomerProducts-cart-container p {
-  margin: 0;
-  text-decoration: none;
   font-size: 24px;
+  margin: 0;
   padding-left: 10px;
+  text-decoration: none;
 }
 
 .CustomerProducts-cart-container a {

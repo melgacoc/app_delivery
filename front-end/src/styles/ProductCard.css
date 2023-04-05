@@ -54,20 +54,25 @@
 	align-items: center;
 } */
 
-.ProductCard-img {
-	width: 50%;
-}
 
 .ProductCard-card {
-	border: red solid 1px;
-	display: flex;
-	flex-direction: column;
-	max-height: 540px;
-	max-width: 360px;
-	margin: 10px;
+  align-items: center;
+  border: grey solid 1px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  justify-content: flex-end;
+  margin: 10px;
+  width: 300px;
+}
+
+.ProductCard-img {
+  border: red solid 1px;
+  width: 60%;
 }
 
 .ProductCard-tableBtn {
-	display: flex;
-	border: blue solid 1px;
+  border: blue solid 1px;
+  display: flex;
 }
