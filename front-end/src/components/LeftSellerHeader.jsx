@@ -4,10 +4,11 @@ import {
   ROUTE,
   HEADER_ORDERS,
 } from '../dataTestedId/clientHeaderIds';
+import '../styles/LeftSellerHeader.css';
 
 function LeftSellerHeader() {
   return (
-    <div>
+    <div className="LeftSellerHeader-left-container">
       <Link to="/seller/orders">
         <p
           data-testid={ `${ROUTE}${HEADER_ORDERS}` }

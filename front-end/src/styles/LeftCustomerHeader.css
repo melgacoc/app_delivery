@@ -1,0 +1,30 @@
+.LeftCustomerHeader-left-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 24px;
+  width: 600px;
+  background-color: #2FC18C;
+}
+
+.LeftCustomerHeader-left-container a {
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  width: 300px;
+}
+
+.LeftCustomerHeader-left-container p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  height: 100%;
+  width: 100%;
+}
+
+.LeftCustomerHeader-orders-link {
+  background-color: #036B52;
+}

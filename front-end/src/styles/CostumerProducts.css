@@ -4,7 +4,7 @@
   height: 1000px;
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
-  grid-gap: 20px; 
+  grid-gap: 20px;
   border: 1px solid black;
   align-items: center;
 }

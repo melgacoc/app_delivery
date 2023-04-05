@@ -5,10 +5,11 @@ import {
   HEADER_PRODUCTS,
   HEADER_ORDERS,
 } from '../dataTestedId/clientHeaderIds';
+import '../styles/LeftCustomerHeader.css';
 
 function LeftCustomerHeader() {
   return (
-    <div>
+    <div className="LeftCustomerHeader-left-container">
       <Link to="/customer/products">
         <p
           data-testid={ `${ROUTE}${HEADER_PRODUCTS}` }
@@ -16,7 +17,10 @@ function LeftCustomerHeader() {
           Produtos
         </p>
       </Link>
-      <Link to="/customer/orders">
+      <Link
+        to="/customer/orders"
+        className="LeftCustomerHeader-orders-link"
+      >
         <p
           data-testid={ `${ROUTE}${HEADER_ORDERS}` }
         >

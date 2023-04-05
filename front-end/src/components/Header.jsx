@@ -8,6 +8,7 @@ import {
 import Context from '../context/Context';
 import LeftSellerHeader from './LeftSellerHeader';
 import LeftCustomerHeader from './LeftCustomerHeader';
+import '../styles/Header.css';
 
 function Header() {
   const history = useHistory();
@@ -28,24 +29,30 @@ function Header() {
   };
 
   return (
-    <div>
-      {role === 'seller' && <LeftSellerHeader />}
-      {role === 'customer' && <LeftCustomerHeader />}
-      <p
-        data-testid={ `${ROUTE}${HEADER_NAME}` }
-      >
-        {userName}
-      </p>
-      <button
-        data-testid={ `${ROUTE}${HEADER_LOGOUT}` }
-        type="button"
-        id="logOut"
-        name="logOut"
-        onClick={ handleLogOut }
-      >
-        Sair
-      </button>
-    </div>
+    <header className="Header-header-container">
+      <div className="Header-subcontainer-left">
+        {role === 'seller' && <LeftSellerHeader />}
+        {role === 'customer' && <LeftCustomerHeader />}
+      </div>
+      <div className="Header-subcontainer-right">
+        <p
+          data-testid={ `${ROUTE}${HEADER_NAME}` }
+          className="Header-user-name"
+        >
+          {userName}
+        </p>
+        <button
+          className="Header-btn-logout"
+          data-testid={ `${ROUTE}${HEADER_LOGOUT}` }
+          type="button"
+          id="logOut"
+          name="logOut"
+          onClick={ handleLogOut }
+        >
+          Sair
+        </button>
+      </div>
+    </header>
   );
 }
 
