@@ -30,7 +30,7 @@ function CustomerProducts() {
   }, [globalCart]);
 
   return (
-    <div>
+    <div className="CustomerProducts-main-div">
       <Header />
       <section className="CustomerProducts-cart-container">
         <Link

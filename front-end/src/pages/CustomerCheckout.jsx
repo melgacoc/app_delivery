@@ -6,6 +6,7 @@ import AddressDetails from '../components/AddressDetails';
 import {
   ROUTE,
 } from '../dataTestedId/CustomerCheckoutIds';
+import '../styles/CustomerCheckout.css';
 
 function CustomerCheckout() {
   useEffect(() => {
@@ -13,7 +14,7 @@ function CustomerCheckout() {
   }, []);
 
   return (
-    <div>
+    <div className="CustomerCheckout-main-container">
       <Header />
       <OrderTable testIdRoute={ ROUTE } />
       <TotalPriceElement testIdRoute={ ROUTE } />

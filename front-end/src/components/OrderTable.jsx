@@ -9,6 +9,7 @@ import {
   REMOVE,
 } from '../dataTestedId/CustomerCheckoutIds';
 import Context from '../context/Context';
+import '../styles/OrderTable.css';
 
 function OrderTable({ testIdRoute, products }) {
   const { globalCart, setTotalPrice, setGlobalCart } = useContext(Context);
@@ -44,46 +45,65 @@ function OrderTable({ testIdRoute, products }) {
   };
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Descrição</th>
-          <th>Quantidade</th>
-          <th>Valor unitário</th>
-          <th>Sub-total</th>
-          <th>Remover item</th>
+    <table className="OrderTable-table">
+      <thead className="OrderTable-thead">
+        <tr className="OrderTable-tablerow-head">
+          <th className="OrderTable-item-number OrderTable-heading">Item</th>
+          <th className="OrderTable-description OrderTable-heading">Descrição</th>
+          <th className="OrderTable-quantity OrderTable-heading">Quantidade</th>
+          <th className="OrderTable-unit-value OrderTable-heading">Valor unitário</th>
+          <th className="OrderTable-subtotal OrderTable-heading">Sub-total</th>
+          <th className="OrderTable-remove-btn OrderTable-heading">Remover item</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          {order.map(({ name, quantity, price }, index) => (
-            <td key={ `${name}-${index}` }>
-              <p data-testid={ `${testIdRoute}${ITEM_NUM}${index}` }>
-                {index + 1}
-              </p>
-              <p data-testid={ `${testIdRoute}${NAME}${index}` }>
-                {name}
-              </p>
-              <p data-testid={ `${testIdRoute}${QNT}${index}` }>
-                {quantity}
-              </p>
-              <p data-testid={ `${testIdRoute}${PRICE}${index}` }>
-                {price.toFixed(2).toString().replace('.', ',')}
-              </p>
-              <p data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }>
-                {(price * quantity).toFixed(2).toString().replace('.', ',')}
-              </p>
-              {!products && (
+      <tbody className="OrderTable-tbody">
+        {order.map(({ name, quantity, price }, index) => (
+          <tr
+            key={ `${name}-${index}` }
+            className="OrderTable-tbody-tr"
+          >
+            <td
+              data-testid={ `${testIdRoute}${ITEM_NUM}${index}` }
+              className="OrderTable-item-number"
+            >
+              {index + 1}
+            </td>
+            <td
+              data-testid={ `${testIdRoute}${NAME}${index}` }
+              className="OrderTable-description"
+            >
+              {name}
+            </td>
+            <td
+              className="OrderTable-quantity"
+              data-testid={ `${testIdRoute}${QNT}${index}` }
+            >
+              {quantity}
+            </td>
+            <td
+              className="OrderTable-unit-value"
+              data-testid={ `${testIdRoute}${PRICE}${index}` }
+            >
+              {price.toFixed(2).toString().replace('.', ',')}
+            </td>
+            <td
+              className="OrderTable-subtotal"
+              data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }
+            >
+              {(price * quantity).toFixed(2).toString().replace('.', ',')}
+            </td>
+            {!products && (
+              <td className="OrderTable-remove-btn">
                 <button
+                  className="OrderTable-buttons-table"
                   type="button"
                   data-testid={ `${testIdRoute}${REMOVE}${index}` }
                   onClick={ () => handleRemove(name) }
                 >
                   Remover
-                </button>)}
-            </td>))}
-        </tr>
+                </button>
+              </td>)}
+          </tr>))}
       </tbody>
     </table>
   );

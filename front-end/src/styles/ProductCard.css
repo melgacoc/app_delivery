@@ -57,6 +57,7 @@
 
 .ProductCard-card {
   align-items: center;
+  background-color: white;
   border: grey solid 1px;
   border-radius: 5px;
   display: flex;

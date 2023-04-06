@@ -15,6 +15,10 @@
   grid-gap: 20px;
 } */
 
+.CustomerProducts-main-div {
+  background-color: #eaf1ef;
+}
+
 .CustomerProducts-cardContainer {
   align-items: center;
   display: flex;
