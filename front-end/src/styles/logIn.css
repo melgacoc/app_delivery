@@ -9,11 +9,18 @@
 
 .container {
   align-items: center;
+
+  /* border: red solid 1px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 5px;
   padding: 5px;
+}
+
+.container input {
+  border-radius: 5px;
+  width: 90%;
 }
 
 .containerLogin {

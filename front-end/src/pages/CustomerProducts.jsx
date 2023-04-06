@@ -41,13 +41,14 @@ function CustomerProducts() {
             type="button"
             data-testid={ `${ROUTE}${BTN_CART}` }
             disabled={ disabled }
+            className="CustomerProducts-button-cart"
           >
             CARRINHO
           </button>
-          <p data-testid={ `${ROUTE}${CHECKOUT}` }>
-            {totalPrice}
-          </p>
         </Link>
+        <p data-testid={ `${ROUTE}${CHECKOUT}` }>
+          {totalPrice}
+        </p>
       </section>
       <section className="CustomerProducts-cardContainer">
         <div className="CustomerProducts-sub-container">

@@ -23,7 +23,6 @@
 }
 
 .CustomerProducts-sub-container {
-  border: solid blue 1px;
   display: flex;
   flex-wrap: wrap;
   width: 95%;
@@ -37,30 +36,35 @@
 }
 
 .CustomerProducts-cart-link {
-  align-items: center;
-  background-color: #036b52;
-  border-radius: 10px;
-  color: white;
-  display: flex;
-  height: 90%;
-  justify-content: center;
-  width: 250px;
+  height: 80%;
+  text-decoration: none;
+
 }
 
-.CustomerProducts-cart-link button {
+.CustomerProducts-button-cart {
+  align-items: center;
   background-color: #036b52;
   border: 0;
+  border-radius: 5px 0 0 5px;
   color: white;
+  display: flex;
   font-size: 24px;
+  height: 100%;
+  justify-content: center;
+  width: 150px;
 }
 
 .CustomerProducts-cart-container p {
+  align-items: center;
+  background-color: #2fc18c;
+  border-radius: 0 5px 5px 0;
+  color: black;
+  display: flex;
   font-size: 24px;
+  height: 80%;
+  justify-content: center;
   margin: 0;
-  padding-left: 10px;
   text-decoration: none;
+  width: 100px;
 }
 
-.CustomerProducts-cart-container a {
-  text-decoration: none;
-}

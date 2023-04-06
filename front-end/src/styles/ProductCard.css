@@ -62,15 +62,35 @@
   display: flex;
   flex-direction: column;
   height: 400px;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-left: 4%;
   margin-top: 2%;
   width: 20%;
 }
 
+.ProductCard-price-container {
+  align-items: center;
+  display: flex;
+  height: 20%;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.ProductCard-price {
+  background-color: #a7d1c8;
+  border-radius: 5px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  margin-right: 30px;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  top: 250px;
+}
+
 .ProductCard-img {
-  border: red solid 1px;
-  margin-bottom: 15%;
   width: 60%;
 }
 
@@ -115,6 +135,7 @@
   border: 0;
   font-size: 24px;
   font-weight: 700;
+  width: 50px;
 }
 
 .ProductCard-btn-minus {

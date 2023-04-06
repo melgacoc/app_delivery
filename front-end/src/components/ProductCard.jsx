@@ -49,12 +49,14 @@ function ProductCard({ id, name, price, urlImage }) {
 
   return (
     <div className="ProductCard-card">
-      <p
-        className="price"
-        data-testid={ `${ROUTE}${PRICE}${id}` }
-      >
-        {price.replace('.', ',')}
-      </p>
+      <div className="ProductCard-price-container">
+        <p
+          className="ProductCard-price"
+          data-testid={ `${ROUTE}${PRICE}${id}` }
+        >
+          {price.replace('.', ',')}
+        </p>
+      </div>
       <img
         className="ProductCard-img"
         alt={ name }

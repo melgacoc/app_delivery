@@ -98,7 +98,7 @@ function LogIn() {
             type="email"
             id="email"
             name="email"
-            placeholder="LogIn"
+            placeholder="E-mail"
             value={ email }
             onChange={ ({ target }) => setEmail(target.value) }
           />
