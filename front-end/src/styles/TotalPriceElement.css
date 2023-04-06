@@ -1,0 +1,15 @@
+.TotalPriceElement-container {
+  background-color: #036b52;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  font-size: 30px;
+  font-weight: 600;
+  justify-content: center;
+  margin: 20px;
+  width: 300px;
+}
+
+.TotalPriceElement-container p {
+  margin: 0;
+}

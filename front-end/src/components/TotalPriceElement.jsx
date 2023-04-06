@@ -2,13 +2,14 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import Context from '../context/Context';
 import { TOTAL } from '../dataTestedId/CustomerCheckoutIds';
+import '../styles/TotalPriceElement.css';
 
 function TotalPriceElement({ testIdRoute }) {
   const { totalPrice } = useContext(Context);
   return (
-    <div>
+    <div className="TotalPriceElement-container">
       <p data-testid={ `${testIdRoute}${TOTAL}` }>
-        {totalPrice}
+        {`TOTAL: ${totalPrice}`}
       </p>
     </div>
   );

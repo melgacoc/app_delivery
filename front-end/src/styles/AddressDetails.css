@@ -1,0 +1,64 @@
+.AddressDetails-form {
+  align-items: center;
+  border: #828282 solid 1px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-evenly;
+  width: 95%;
+
+}
+
+.AddressDetails-inputs-container {
+  display: flex;
+  font-size: 20px;
+  height: 50%;
+  justify-content: space-evenly;
+  width: 100%;
+
+}
+
+.AddressDetails-select-label {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.AddressDetails-select-label select {
+  height: 50px;
+  width: 100%;
+}
+
+.AddressDetails-address-label {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.AddressDetails-address-label input {
+  height: 50px;
+  width: 100%;
+
+}
+
+.AddressDetails-number-label {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+}
+
+.AddressDetails-number-label input {
+  height: 50px;
+  width: 100%;
+
+}
+
+.AddressDetails-button {
+  background-color: #036b52;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  font-size: 30px;
+  width: 300px;
+}

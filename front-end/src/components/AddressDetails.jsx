@@ -7,6 +7,7 @@ import {
   BTN_SUBMIT,
   ROUTE,
   SELECT } from '../dataTestedId/CustomerCheckoutIds';
+import '../styles/AddressDetails.css';
 
 function AddressDetails() {
   const history = useHistory();
@@ -51,37 +52,52 @@ function AddressDetails() {
   };
 
   return (
-    <form>
-      <select
-        data-testid={ `${ROUTE}${SELECT}` }
-        onChange={ ({ target }) => setSeller(Number(target.value)) }
-      >
-        <option>
-          Selecione o vendedor
-        </option>
-        {sellers.map(({ name, id }, index) => (
-          <option
-            value={ id }
-            key={ `${name}-${index}` }
+    <form className="AddressDetails-form">
+      <div className="AddressDetails-inputs-container">
+        <label htmlFor="select-seller" className="AddressDetails-select-label">
+          Pessoa Vendedora Responsável:
+          <select
+            data-testid={ `${ROUTE}${SELECT}` }
+            id="select-seller"
+            onChange={ ({ target }) => setSeller(Number(target.value)) }
           >
-            {name}
-          </option>
-        ))}
-      </select>
-      <input
-        type="text"
-        data-testid={ `${ROUTE}${ADDRESS}` }
-        onChange={ ({ target }) => setAddress(target.value) }
-      />
-      <input
-        type="number"
-        data-testid={ `${ROUTE}${ADDR_NUM}` }
-        onChange={ ({ target }) => setNumber(Number(target.value)) }
-      />
+            <option>
+              Selecione o vendedor
+            </option>
+            {sellers.map(({ name, id }, index) => (
+              <option
+                value={ id }
+                key={ `${name}-${index}` }
+              >
+                {name}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label htmlFor="address-input" className="AddressDetails-address-label">
+          Endereço:
+          <input
+            id="address-input"
+            type="text"
+            data-testid={ `${ROUTE}${ADDRESS}` }
+            onChange={ ({ target }) => setAddress(target.value) }
+          />
+        </label>
+        <label htmlFor="address-number-input" className="AddressDetails-number-label">
+          Número:
+          <input
+            id="address-number-input"
+            type="number"
+            data-testid={ `${ROUTE}${ADDR_NUM}` }
+            onChange={ ({ target }) => setNumber(Number(target.value)) }
+          />
+        </label>
+      </div>
       <button
         type="button"
         data-testid={ `${ROUTE}${BTN_SUBMIT}` }
         onClick={ submitOrder }
+        className="AddressDetails-button"
       >
         Finalizar pedido
       </button>
