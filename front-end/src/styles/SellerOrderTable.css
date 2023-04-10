@@ -1,0 +1,123 @@
+.SellerOrderTable-table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1%;
+  width: 90%;
+}
+
+.SellerOrderTable-thead {
+  width: 100%;
+}
+
+.SellerOrderTable-tablerow-head {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.SellerOrderTable-tbody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.SellerOrderTable-tbody-tr {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.SellerOrderTable-item-number {
+  align-items: center;
+  background-color: #2fc18c;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  font-size: 24px;
+  height: 50px;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 15%;
+}
+
+.SellerOrderTable-description {
+  align-items: center;
+  background-color: #a7d1c8;
+  display: flex;
+  font-size: 24px;
+  height: 50px;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 40%;
+
+}
+
+.SellerOrderTable-quantity {
+  align-items: center;
+  background-color: #036b52;
+  color: white;
+  display: flex;
+  font-size: 24px;
+  height: 50px;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 20%;
+}
+
+.SellerOrderTable-unit-value {
+  align-items: center;
+  background-color: #421981;
+  color: white;
+  display: flex;
+  font-size: 24px;
+  height: 50px;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 20%;
+}
+
+.SellerOrderTable-subtotal {
+  align-items: center;
+  background-color: #056cf9;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  display: flex;
+  font-size: 24px;
+  height: 50px;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 20%;
+
+}
+
+.SellerOrderTable-remove-btn {
+  align-items: center;
+  background-color: #2fc18c;
+  color: white;
+  display: flex;
+  font-size: 24px;
+  height: 50px;
+  justify-content: center;
+  margin-top: 10px;
+  text-align: center;
+  width: 20%;
+}
+
+.SellerOrderTable-buttons-table {
+  background-color: #2fc18c;
+  border: 0;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.SellerOrderTable-heading {
+  background-color: #eaf1ef;
+  color: black;
+  font-weight: 400;
+  margin-top: 0;
+}

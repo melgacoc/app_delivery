@@ -1,0 +1,60 @@
+.SellingOrderDetails-main-div {
+  align-items: center;
+  background-color: #fbfffe;
+  display: flex;
+  font-size: 24px;
+  justify-content: space-between;
+  margin-top: 1%;
+  width: 90%;
+}
+
+.SellingOrderDetails-main-div p {
+  margin: 0;
+}
+
+.SellingOrderDetails-details {
+  background-color: #818079;
+  border-radius: 5px;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.SellingOrderDetails-pending {
+  background-color: #ccb800;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.SellingOrderDetails-preparing {
+  background-color: #6c0;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.SellingOrderDetails-delivered {
+  background-color: #00cc9b;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.SellingOrderDetails-main-div button {
+  background-color: #259a6f;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  width: 20%;
+}
+
+.SellingOrderDetails-main-div button:hover {
+  background-color: #2fc18c;
+}
+
+
+.SellingOrderDetails-main-div button:disabled {
+  background-color: #114d37;
+}
+

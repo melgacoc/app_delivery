@@ -18,16 +18,22 @@
 .OrderDetails-pending {
   background-color: #ccb800;
   border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .OrderDetails-preparing {
   background-color: #6c0;
   border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .OrderDetails-delivered {
   background-color: #00cc9b;
   border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .OrderDetails-btn {

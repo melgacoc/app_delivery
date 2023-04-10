@@ -8,6 +8,7 @@ import {
   SUBTOTAL,
 } from '../dataTestedId/CustomerCheckoutIds';
 import Context from '../context/Context';
+import '../styles/SellerOrderTable.css';
 
 function SellerOrderTable({ testIdRoute, products }) {
   const { globalCart, setTotalPrice, setGlobalCart } = useContext(Context);
@@ -36,37 +37,70 @@ function SellerOrderTable({ testIdRoute, products }) {
   }, [order]);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Descrição</th>
-          <th>Quantidade</th>
-          <th>Valor unitário</th>
-          <th>Sub-total</th>
+    <table className="SellerOrderTable-table">
+      <thead className="SellerOrderTable-thead">
+        <tr className="SellerOrderTable-tablerow-head">
+          <th className="SellerOrderTable-item-number SellerOrderTable-heading">Item</th>
+          <th
+            className="SellerOrderTable-description SellerOrderTable-heading"
+          >
+            Descrição
+
+          </th>
+          <th
+            className="SellerOrderTable-quantity SellerOrderTable-heading"
+          >
+            Quantidade
+
+          </th>
+          <th
+            className="SellerOrderTable-unit-value SellerOrderTable-heading"
+          >
+            Valor unitário
+
+          </th>
+          <th
+            className="SellerOrderTable-subtotal SellerOrderTable-heading"
+          >
+            Sub-total
+
+          </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          {order.map(({ name, quantity, price }, index) => (
-            <td key={ `${name}-${index}` }>
-              <p data-testid={ `${testIdRoute}${ITEM_NUM}${index}` }>
-                {index + 1}
-              </p>
-              <p data-testid={ `${testIdRoute}${NAME}${index}` }>
-                {name}
-              </p>
-              <p data-testid={ `${testIdRoute}${QNT}${index}` }>
-                {quantity}
-              </p>
-              <p data-testid={ `${testIdRoute}${PRICE}${index}` }>
-                {price.toFixed(2).toString().replace('.', ',')}
-              </p>
-              <p data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }>
-                {(price * quantity).toFixed(2).toString().replace('.', ',')}
-              </p>
-            </td>))}
-        </tr>
+      <tbody className="SellerOrderTable-tbody">
+        {order.map(({ name, quantity, price }, index) => (
+          <tr key={ `${name}-${index}` } className="SellerOrderTable-tbody-tr">
+            <td
+              data-testid={ `${testIdRoute}${ITEM_NUM}${index}` }
+              className="SellerOrderTable-item-number"
+            >
+              {index + 1}
+            </td>
+            <td
+              data-testid={ `${testIdRoute}${NAME}${index}` }
+              className="SellerOrderTable-description"
+            >
+              {name}
+            </td>
+            <td
+              data-testid={ `${testIdRoute}${QNT}${index}` }
+              className="SellerOrderTable-quantity"
+            >
+              {quantity}
+            </td>
+            <td
+              data-testid={ `${testIdRoute}${PRICE}${index}` }
+              className="SellerOrderTable-unit-value"
+            >
+              {price.toFixed(2).toString().replace('.', ',')}
+            </td>
+            <td
+              data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }
+              className="SellerOrderTable-subtotal"
+            >
+              {(price * quantity).toFixed(2).toString().replace('.', ',')}
+            </td>
+          </tr>))}
       </tbody>
     </table>
   );

@@ -7,6 +7,7 @@ import { ROUTE,
   PREPARING,
   DISPATCH } from '../dataTestedId/SellerOrderDetailsIds';
 import Context from '../context/Context';
+import '../styles/SellingOrderDetails.css';
 
 const DATE_CUT_LIMIT = 10;
 
@@ -16,6 +17,7 @@ function SellingOrderDetails({ id, saleDate, status }) {
   const [dispatchBtn, setDispatchBtn] = useState(true);
   const [updatedStatus, setUpdatedStatus] = useState();
   const [user, setUser] = useState();
+  const [statusClass, setStatusClass] = useState('SellingOrderDetails-pending');
 
   useEffect(() => {
     setUpdatedStatus(status);
@@ -27,10 +29,18 @@ function SellingOrderDetails({ id, saleDate, status }) {
     if (updatedStatus === 'Preparando') {
       setPreparingBtn(true);
       setDispatchBtn(false);
+      setStatusClass('SellingOrderDetails-preparing');
     }
     if (updatedStatus === 'Em Trânsito') {
       setPreparingBtn(true);
       setDispatchBtn(true);
+      setStatusClass('SellingOrderDetails-preparing');
+    }
+
+    if (updatedStatus === 'Entregue') {
+      setPreparingBtn(true);
+      setDispatchBtn(true);
+      setStatusClass('SellingOrderDetails-delivered');
     }
   }, [updatedStatus]);
 
@@ -48,14 +58,14 @@ function SellingOrderDetails({ id, saleDate, status }) {
   };
 
   return (
-    <div>
-      <p data-testid={ `${ROUTE}${ORDER_ID}` }>
+    <div className="SellingOrderDetails-main-div">
+      <p data-testid={ `${ROUTE}${ORDER_ID}` } className="SellingOrderDetails-details">
         {id}
       </p>
-      <p data-testid={ `${ROUTE}${DATE}` }>
+      <p data-testid={ `${ROUTE}${DATE}` } className="SellingOrderDetails-details">
         {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
       </p>
-      <p data-testid={ `${ROUTE}${STATUS}` }>
+      <p data-testid={ `${ROUTE}${STATUS}` } className={ statusClass }>
         {updatedStatus}
       </p>
       <button

@@ -17,7 +17,7 @@ function OrderDetails({ id, seller, saleDate, status }) {
   useEffect(() => {
     if (status === 'Preparando'
     || status === 'Em trânsito') setStatusClass('OrderDetails-preparing');
-    if (status === 'Em trânsito') setDisabledButton(false);
+    if (status === 'Em Trânsito') setDisabledButton(false);
     if (status === 'Entregue') setStatusClass('OrderDetails-delivered');
   }, []);
   return (

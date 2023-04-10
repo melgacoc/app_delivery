@@ -6,6 +6,7 @@ import { ROUTE } from '../dataTestedId/SellerOrderDetailsIds';
 import Context from '../context/Context';
 import SellingOrderDetails from '../components/SellingOrderDetails';
 import SellerOrderTable from '../components/SellerOrderTable';
+import '../styles/SellerOrderDetails.css';
 
 function SellerOrderDetails({ match }) {
   const { specificOrder, setSpecificOrder } = useContext(Context);
@@ -37,7 +38,7 @@ function SellerOrderDetails({ match }) {
     <div>
       <Header />
       {loading ? (<h1>Carregando...</h1>) : (
-        <div>
+        <main className="SellerOrderDetails-main-container">
           <SellingOrderDetails
             id={ specificOrder.order.id }
             seller={ specificOrder.seller.name }
@@ -46,7 +47,7 @@ function SellerOrderDetails({ match }) {
           />
           <SellerOrderTable testIdRoute={ ROUTE } products={ specificOrder.products } />
           <TotalPriceElement testIdRoute={ ROUTE } />
-        </div>
+        </main>
       )}
     </div>
   );
