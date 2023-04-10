@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import Context from './Context';
 
 const HEADER = (token) => ({
@@ -18,6 +19,7 @@ function Provider({ children }) {
   const [sellers, setSellers] = useState([]);
   const [orders, setOrders] = useState([]);
   const [specificOrder, setSpecificOrder] = useState();
+  const history = useHistory();
 
   const cartTotalValue = useCallback((cart) => {
     const totalValue = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
@@ -110,6 +112,7 @@ function Provider({ children }) {
   };
 
   useEffect(() => {
+    if (!localStorage.getItem('user')) history.push('/login');
     fetchProducts();
     fetchSellers();
   }, []);

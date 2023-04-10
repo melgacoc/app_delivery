@@ -55,7 +55,9 @@ function LogIn() {
     const data = await response.json();
 
     const NOT_FOUND_STATUS = 404;
-    if (response.status === NOT_FOUND_STATUS) {
+    const UNAUTHORIZED_STATUS = 401;
+    if (response.status === NOT_FOUND_STATUS
+      || response.status === UNAUTHORIZED_STATUS) {
       setInvalidLogin(true);
       return 0;
     }

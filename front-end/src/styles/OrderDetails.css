@@ -58,3 +58,8 @@
   background-color: #2fc18c;
   color: black;
 }
+
+.OrderDetails-btn:disabled {
+  background-color: #036b52;
+  color: white;
+}
