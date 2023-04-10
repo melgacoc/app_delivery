@@ -24,3 +24,8 @@
   text-decoration: none;
   width: 100%;
 }
+
+.LeftSellerHeader-orders-link p:hover {
+  background-color: #036b52;
+  color: white;
+}

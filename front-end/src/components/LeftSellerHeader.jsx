@@ -9,7 +9,7 @@ import '../styles/LeftSellerHeader.css';
 function LeftSellerHeader() {
   return (
     <div className="LeftSellerHeader-left-container">
-      <Link to="/seller/orders">
+      <Link to="/seller/orders" className="LeftSellerHeader-orders-link">
         <p
           data-testid={ `${ROUTE}${HEADER_ORDERS}` }
         >

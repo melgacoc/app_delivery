@@ -10,7 +10,7 @@ import '../styles/LeftCustomerHeader.css';
 function LeftCustomerHeader() {
   return (
     <div className="LeftCustomerHeader-left-container">
-      <Link to="/customer/products">
+      <Link to="/customer/products" className="LeftCustomerHeader-products-link">
         <p
           data-testid={ `${ROUTE}${HEADER_PRODUCTS}` }
         >

@@ -33,7 +33,12 @@
 .Header-btn-logout {
   background-color: #056cf9;
   border: 0;
-  color: white;
+  color: black;
   font-size: 24px;
   width: 200px;
+}
+
+.Header-btn-logout:hover {
+  background-color: #0153c7;
+  color: white;
 }

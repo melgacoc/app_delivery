@@ -25,6 +25,18 @@
   width: 100%;
 }
 
-.LeftCustomerHeader-orders-link {
+.LeftCustomerHeader-orders-link p {
   background-color: #036b52;
+  color: white;
+}
+
+.LeftCustomerHeader-products-link p:hover {
+  background-color: #036b52;
+  color: white;
+}
+
+
+.LeftCustomerHeader-orders-link p:hover {
+  background-color: #2fc18c;
+  color: black;
 }
