@@ -1,0 +1,39 @@
+.OrderDetails-main-div {
+  display: flex;
+  font-size: 24px;
+  justify-content: space-between;
+  margin-top: 10px;
+  vertical-align: middle;
+  width: 90%;
+}
+
+.OrderDetails-main-div p {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 15%;
+}
+
+.OrderDetails-pending {
+  background-color: #ccb800;
+  border-radius: 10px;
+}
+
+.OrderDetails-preparing {
+  background-color: #6c0;
+  border-radius: 10px;
+}
+
+.OrderDetails-delivered {
+  background-color: #00cc9b;
+  border-radius: 10px;
+}
+
+.OrderDetails-btn {
+  background-color: #036b52;
+  border: 0;
+  border-radius: 5px;
+  color: white;
+  width: 20%;
+}

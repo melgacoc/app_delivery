@@ -30,13 +30,11 @@ function OrderTable({ testIdRoute, products }) {
   }, []);
 
   useEffect(() => {
-    if (!products) {
-      const valueToUpdate = order
-        .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
-      const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
-      setTotalPrice(fixedValue);
-      setGlobalCart(order);
-    }
+    const valueToUpdate = order
+      .reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    const fixedValue = valueToUpdate.toFixed(2).replace('.', ',');
+    setTotalPrice(fixedValue);
+    setGlobalCart(order);
   }, [order]);
 
   const handleRemove = (name) => {
@@ -53,7 +51,9 @@ function OrderTable({ testIdRoute, products }) {
           <th className="OrderTable-quantity OrderTable-heading">Quantidade</th>
           <th className="OrderTable-unit-value OrderTable-heading">Valor unitário</th>
           <th className="OrderTable-subtotal OrderTable-heading">Sub-total</th>
-          <th className="OrderTable-remove-btn OrderTable-heading">Remover item</th>
+          {!products && (
+            <th className="OrderTable-remove-btn OrderTable-heading">Remover item</th>
+          )}
         </tr>
       </thead>
       <tbody className="OrderTable-tbody">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ROUTE,
   ORDER_ID,
@@ -6,12 +6,22 @@ import { ROUTE,
   DATE,
   STATUS,
   CHECK } from '../dataTestedId/CustomerOrderDetailsIds';
+import '../styles/OrderDetails.css';
 
 const DATE_CUT_LIMIT = 10;
 
 function OrderDetails({ id, seller, saleDate, status }) {
+  const [statusClass, setStatusClass] = useState('OrderDetails-pending');
+  const [disabledButton, setDisabledButton] = useState('true');
+
+  useEffect(() => {
+    if (status === 'Preparando'
+    || status === 'Em trânsito') setStatusClass('OrderDetails-preparing');
+    if (status === 'Em trânsito') setDisabledButton(false);
+    if (status === 'Entregue') setStatusClass('OrderDetails-delivered');
+  }, []);
   return (
-    <div>
+    <div className="OrderDetails-main-div">
       <p data-testid={ `${ROUTE}${ORDER_ID}` }>
         {id}
       </p>
@@ -21,13 +31,14 @@ function OrderDetails({ id, seller, saleDate, status }) {
       <p data-testid={ `${ROUTE}${DATE}` }>
         {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
       </p>
-      <p data-testid={ `${ROUTE}${STATUS}` }>
+      <p data-testid={ `${ROUTE}${STATUS}` } className={ statusClass }>
         {status}
       </p>
       <button
+        className="OrderDetails-btn"
         type="button"
         data-testid={ `${ROUTE}${CHECK}` }
-        disabled
+        disabled={ disabledButton }
       >
         Marcar como entregue
       </button>
