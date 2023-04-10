@@ -1,37 +1,41 @@
-.body {
+.Register-main-div {
   align-items: center;
+  background-color: black;
   display: flex;
   flex-direction: column;
-  height: auto;
-  margin-top: 26%;
-  width: auto;
+  height: 100vh;
+  justify-content: center;
 }
 
-.container {
+.Register-logo-img {
+  width: 25%;
+}
+
+.Register-form {
   align-items: center;
+  background-color: #eaf1ef;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: center;
+  width: 30%;
+}
+
+.Register-form label {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 5px;
-  padding: 5px;
+  margin-bottom: 3%;
+  width: 50%;
 }
 
-.containerLogin {
-  align-items: center;
-  background-color: rgb(218, 226, 223);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  justify-content: center;
-  width: 300px;
+.Register-form input {
+  width: 100%;
 }
 
-.containerBtn {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-  padding: 10px;
+.Register-invalid-warning {
+  color: red;
+  font-size: 18px;
+  margin-top: 1%;
 }

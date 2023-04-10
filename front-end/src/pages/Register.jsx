@@ -7,6 +7,7 @@ import { ROUTE,
   BUTTON,
   INVALID } from '../dataTestedId/registerIds';
 import '../styles/register.css';
+import logo from '../images/logo.png';
 
 function Register() {
   const [name, setName] = useState('');
@@ -56,6 +57,12 @@ function Register() {
 
     const data = await response.json();
 
+    const CONFLICT_STATUS = 409;
+    if (response.status === CONFLICT_STATUS) {
+      setInvalidRegister(true);
+      return 0;
+    }
+
     const user = {
       name: data.name,
       email: data.email,
@@ -64,62 +71,49 @@ function Register() {
     };
     localStorage.setItem('user', JSON.stringify(user));
 
-    const CONFLICT_STATUS = 409;
     const CREATED_STATUS = 201;
-    if (response.status === CONFLICT_STATUS) setInvalidRegister(true);
     if (response.status === CREATED_STATUS) {
       history.push('/customer/products');
     }
   };
 
   return (
-    <div
-      className="body"
-    >
-      <section
-        className="containerLogin"
-      >
-        <label
-          htmlFor="name"
-          className="container"
-        >
+    <div className="Register-main-div">
+      <img
+        src={ logo }
+        alt=""
+        className="Register-logo-img"
+      />
+      <form className="Register-form">
+        <label htmlFor="name">
           Nome
           <input
             data-testid={ `${ROUTE}${NAME}` }
             type="text"
             id="name"
             name="name"
-            placeholder="Nome"
             value={ name }
             onChange={ ({ target }) => setName(target.value) }
           />
         </label>
-        <label
-          htmlFor="email"
-          className="container"
-        >
-          Email
+        <label htmlFor="email">
+          E-mail
           <input
             data-testid={ `${ROUTE}${EMAIL}` }
             type="email"
             id="email"
             name="email"
-            placeholder="Email"
             value={ email }
             onChange={ ({ target }) => setEmail(target.value) }
           />
         </label>
-        <label
-          htmlFor="password"
-          className="container"
-        >
+        <label htmlFor="password">
           Password
           <input
             data-testid={ `${ROUTE}${PASSWORD}` }
             type="password"
             id="password"
             name="password"
-            placeholder="Password"
             value={ password }
             onChange={ ({ target }) => setPassword(target.value) }
           />
@@ -130,19 +124,19 @@ function Register() {
           type="button"
           id="subButton"
           name="subButton"
-          placeholder="Entrar"
           disabled={ disableButton }
           onClick={ handleSubmit }
         >
           Cadastrar
         </button>
-      </section>
+      </form>
       {
         invalidRegister ? (
           <div
             data-testid={ `${ROUTE}${INVALID}` }
+            className="Register-invalid-warning"
           >
-            Error
+            Falha ao tentar registrar
           </div>
         ) : (null)
       }

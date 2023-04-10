@@ -36,6 +36,7 @@ const register = async (name, email, password) => {
     name,
     email,
     password: passwordEncrypted,
+    role: 'customer',
   });
   return createdUser.get({ plain: true });
 };
