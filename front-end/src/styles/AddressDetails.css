@@ -62,3 +62,13 @@
   font-size: 30px;
   width: 300px;
 }
+
+.AddressDetails-button:hover {
+  background-color: #2fc18c;
+  color: black;
+}
+
+.AddressDetails-button:disabled {
+  background-color: #036b52;
+  color: white;
+}

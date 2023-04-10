@@ -14,13 +14,23 @@ function AddressDetails() {
   const { sellers, totalPrice, globalCart } = useContext(Context);
   const [user, setUser] = useState({});
   const [seller, setSeller] = useState(null);
-  const [address, setAddress] = useState(null);
-  const [number, setNumber] = useState(null);
+  const [address, setAddress] = useState('');
+  const [number, setNumber] = useState(0);
+  const [disabledButton, setDisabledButton] = useState(true);
 
   useEffect(() => {
     const localStorageUser = JSON.parse(localStorage.getItem('user'));
     setUser(localStorageUser);
   }, []);
+
+  useEffect(() => {
+    if (seller > 0
+      && address.length > 0 && number > 0) {
+      setDisabledButton(false);
+    } else {
+      setDisabledButton(true);
+    }
+  }, [seller, address, number]);
 
   const submitOrder = async () => {
     const requestBody = {
@@ -98,6 +108,7 @@ function AddressDetails() {
         data-testid={ `${ROUTE}${BTN_SUBMIT}` }
         onClick={ submitOrder }
         className="AddressDetails-button"
+        disabled={ disabledButton }
       >
         Finalizar pedido
       </button>
