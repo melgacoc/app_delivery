@@ -1,69 +1,14 @@
-/* .body {
-  align-items: center;
-  background-color: #eaf1ef;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  margin-top: 26%;
-  width: 100%;
-}
-
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-  padding: 5px;
-}
-
-.container input {
-  border-radius: 5px;
-  width: 90%;
-}
-
-.containerLogin {
-  align-items: center;
-  background-color: rgb(218, 226, 223);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  justify-content: center;
-  width: 300px;
-}
-
-.containerError {
-  align-items: center;
-  background-color: rgb(160, 58, 63);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  height: 300px;
-  justify-content: center;
-  width: 300px;
-}
-
-.containerBtn {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-  padding: 10px;
-}
- */
-
 .Login-main-div {
   align-items: center;
   background-color: black;
   display: flex;
   flex-direction: column;
   height: 100vh;
+  justify-content: center;
 }
 
 .Login-logo-img {
-  width: 30%;
+  width: 25%;
 }
 
 .Login-form {
@@ -72,7 +17,7 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  height: 35%;
+  height: 30%;
   justify-content: center;
   width: 30%;
 }
@@ -94,4 +39,10 @@
   flex-direction: column;
   height: 30%;
   justify-content: space-between;
+}
+
+.Login-invalid-warning {
+  color: red;
+  font-size: 18px;
+  margin-top: 1%;
 }

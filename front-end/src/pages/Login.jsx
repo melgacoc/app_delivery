@@ -92,7 +92,6 @@ function LogIn() {
             type="email"
             id="email"
             name="email"
-            placeholder="E-mail"
             value={ email }
             onChange={ ({ target }) => setEmail(target.value) }
           />
@@ -100,14 +99,13 @@ function LogIn() {
         <label
           htmlFor="password"
         >
-          Password
+          Senha
           <input
             data-testid={ `${ROUTE}${PASSWORD}` }
             type="password"
             id="password"
             name="password"
             value={ password }
-            placeholder="Password"
             onChange={ ({ target }) => setPassword(target.value) }
           />
         </label>
@@ -115,7 +113,7 @@ function LogIn() {
           <button
             className="btn btn-success"
             data-testid={ `${ROUTE}${BUTTON}` }
-            type="submit"
+            type="button"
             id="subButton"
             name="subButton"
             onClick={ handleSubmit }
@@ -140,12 +138,11 @@ function LogIn() {
       {' '}
       {
         invalidLogin && (
-          <section>
-            <div
-              data-testid={ `${ROUTE}${INVALID}` }
-            >
-              E-mail or password invalids
-            </div>
+          <section
+            data-testid={ `${ROUTE}${INVALID}` }
+            className="Login-invalid-warning"
+          >
+            E-mail ou senha inválidos
           </section>
         )
       }
