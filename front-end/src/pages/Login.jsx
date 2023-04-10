@@ -7,13 +7,13 @@ import { ROUTE,
   REGISTER,
   INVALID } from '../dataTestedId/logInIds';
 import '../styles/logIn.css';
+import logo from '../images/logo.png';
 
 function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [disableButton, setDisableButton] = useState(true);
   const [invalidLogin, setInvalidLogin] = useState(false);
-  const [background, setBackground] = useState('containerLogin');
   const history = useHistory();
 
   useEffect(() => {
@@ -57,7 +57,6 @@ function LogIn() {
     const NOT_FOUND_STATUS = 404;
     if (response.status === NOT_FOUND_STATUS) {
       setInvalidLogin(true);
-      setBackground('containerError');
       return 0;
     }
 
@@ -81,16 +80,11 @@ function LogIn() {
   };
 
   return (
-    <div
-      className="body"
-    >
-      <section className="logInLogo">
-        <img src="" alt="" />
-      </section>
-      <section className={ background }>
+    <div className="Login-main-div">
+      <img src={ logo } alt="" className="Login-logo-img" />
+      <form className="Login-form">
         <label
           htmlFor="email"
-          className="container"
         >
           Email
           <input
@@ -105,7 +99,6 @@ function LogIn() {
         </label>
         <label
           htmlFor="password"
-          className="container"
         >
           Password
           <input
@@ -118,7 +111,7 @@ function LogIn() {
             onChange={ ({ target }) => setPassword(target.value) }
           />
         </label>
-        <div className="containerBtn">
+        <div className="Login-btn-container">
           <button
             className="btn btn-success"
             data-testid={ `${ROUTE}${BUTTON}` }
@@ -143,7 +136,7 @@ function LogIn() {
             </button>
           </Link>
         </div>
-      </section>
+      </form>
       {' '}
       {
         invalidLogin && (

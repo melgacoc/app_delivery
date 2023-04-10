@@ -22,13 +22,13 @@ function OrderDetails({ id, seller, saleDate, status }) {
   }, []);
   return (
     <div className="OrderDetails-main-div">
-      <p data-testid={ `${ROUTE}${ORDER_ID}` }>
+      <p data-testid={ `${ROUTE}${ORDER_ID}` } className="OrderDetails-details">
         {id}
       </p>
-      <p data-testid={ `${ROUTE}${SELLER}` }>
+      <p data-testid={ `${ROUTE}${SELLER}` } className="OrderDetails-details">
         {seller}
       </p>
-      <p data-testid={ `${ROUTE}${DATE}` }>
+      <p data-testid={ `${ROUTE}${DATE}` } className="OrderDetails-details">
         {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
       </p>
       <p data-testid={ `${ROUTE}${STATUS}` } className={ statusClass }>

@@ -1,10 +1,12 @@
 .OrderDetails-main-div {
+  background-color: #eaf1ef;
   display: flex;
   font-size: 24px;
   justify-content: space-between;
   margin-top: 10px;
   vertical-align: middle;
   width: 90%;
+
 }
 
 .OrderDetails-main-div p {
@@ -15,23 +17,31 @@
   width: 15%;
 }
 
+.OrderDetails-details {
+  background-color: #818079;
+  border-radius: 5px;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 .OrderDetails-pending {
   background-color: #ccb800;
-  border-radius: 10px;
+  border-radius: 5px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .OrderDetails-preparing {
   background-color: #6c0;
-  border-radius: 10px;
+  border-radius: 5px;
   padding-left: 15px;
   padding-right: 15px;
 }
 
 .OrderDetails-delivered {
   background-color: #00cc9b;
-  border-radius: 10px;
+  border-radius: 5px;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -42,4 +52,9 @@
   border-radius: 5px;
   color: white;
   width: 20%;
+}
+
+.OrderDetails-btn:hover {
+  background-color: #2fc18c;
+  color: black;
 }

@@ -1,7 +1,9 @@
 .CustomerOrderDetails-main-div {
   align-items: center;
+  background-color: #eaf1ef;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .CustomerOrderDetails-main-container {
