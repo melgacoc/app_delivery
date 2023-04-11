@@ -21,65 +21,76 @@ function SellerOrders() {
     fetchOrdersBySeller(user.id, user.token);
   }, []);
 
+  const getStatusClass = (status) => {
+    if (status === 'Pendente') return 'SellerOrders-pending';
+    if (status === 'Preparando'
+    || status === 'Em Trânsito') return 'SellerOrders-preparing';
+    if (status === 'Entregue') return 'SellerOrders-delivered';
+  };
+
   return (
-    <div>
+    <div className="SellerOrders-main-div">
       <Header />
-      <section className="container">
-        <div className="table">
-          <h1 className="value">Id</h1>
-          <h1 className="value">Status</h1>
-          <h1 className="value">Data</h1>
-          <h1 className="value">Valor</h1>
-          <h1 className="value">Endereço</h1>
-        </div>
-        {orders.length > 0
-      && orders.map(({ id,
-        status,
-        totalPrice,
-        saleDate,
-        deliveryAddress,
-        deliveryNumber,
-      }, index) => (
-        <Link
-          className="ordersTable"
-          to={ `/seller/orders/${id}` }
-          key={ index }
-        >
-          <div className="ordersContent">
-            <p
-              className="idValue"
-              data-testid={ `${ROUTE}${ORDER_ID}${id}` }
+      <table className="SellerOrders-table">
+        <thead className="SellerOrders-thead">
+          <tr className="SellerOrders-thead-tr">
+            <th className="SellerOrders-th">Id</th>
+            <th className="SellerOrders-th">Status</th>
+            <th className="SellerOrders-th">Data</th>
+            <th className="SellerOrders-th">Valor</th>
+            <th className="SellerOrders-th">Endereço</th>
+          </tr>
+        </thead>
+        <tbody className="SellerOrders-tbody">
+          {orders.length > 0
+          && orders.map(({ id,
+            status,
+            totalPrice,
+            saleDate,
+            deliveryAddress,
+            deliveryNumber,
+          }, index) => (
+            <Link
+              className="SellerOrders-tr-link"
+              to={ `/seller/orders/${id}` }
+              key={ index }
             >
-              {id}
-            </p>
-            <p
-              className={ status }
-              data-testid={ `${ROUTE}${STATUS}${id}` }
-            >
-              {status}
-            </p>
-            <p
-              className="dateValue"
-              data-testid={ `${ROUTE}${DATE}${id}` }
-            >
-              {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
-            </p>
-            <p
-              className="priceValue"
-              data-testid={ `${ROUTE}${PRICE}${id}` }
-            >
-              {totalPrice.replace('.', ',')}
-            </p>
-            <p
-              className="addrValue"
-              data-testid={ `${ROUTE}${ADDRESS}${id}` }
-            >
-              {`${deliveryAddress}, ${deliveryNumber}`}
-            </p>
-          </div>
-        </Link>
-      ))}
-      </section>
+              <tr className="SellerOrders-tbody-tr">
+                <td
+                  className="SellerOrders-id"
+                  data-testid={ `${ROUTE}${ORDER_ID}${id}` }
+                >
+                  {id}
+                </td>
+                <td
+                  className={ getStatusClass(status) }
+                  data-testid={ `${ROUTE}${STATUS}${id}` }
+                >
+                  {status}
+                </td>
+                <td
+                  className="SellerOrders-date"
+                  data-testid={ `${ROUTE}${DATE}${id}` }
+                >
+                  {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
+                </td>
+                <td
+                  className="SellerOrders-price"
+                  data-testid={ `${ROUTE}${PRICE}${id}` }
+                >
+                  {totalPrice.replace('.', ',')}
+                </td>
+                <td
+                  className="SellerOrders-address"
+                  data-testid={ `${ROUTE}${ADDRESS}${id}` }
+                >
+                  {`${deliveryAddress}, ${deliveryNumber}`}
+                </td>
+              </tr>
+            </Link>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -1,69 +1,62 @@
-.container {
-  max-width: 1920px;
+.SellerOrders-main-div {
+  align-items: center;
+  background-color: #eaf1ef;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.table {
+.SellerOrders-table {
   align-items: center;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: 5%;
+  flex-direction: column;
+  margin-top: 1%;
+  width: 70%;
+}
+
+.SellerOrders-thead {
+  font-size: 25px;
+  margin-top: 1%;
   width: 100%;
 }
 
-.ordersTable {
-  height: 26px;
-  text-decoration: none;
-  width: 100%;
-}
-
-.ordersContent {
-  align-items: center;
+.SellerOrders-thead-tr {
+  background-color: #b1c2be;
+  border-radius: 5px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
 }
 
-.value {
+.SellerOrders-th {
   color: black;
   display: flex;
   justify-content: center;
   width: 20%;
 }
 
-.idValue {
+.SellerOrders-tbody {
+  width: 100%;
+}
+
+.SellerOrders-tbody-tr {
+  align-items: center;
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+  margin-top: 1%;
+  width: 100%;
+}
+
+.SellerOrders-id {
   background-color: #2fc18c;
+  border-radius: 5px 0 0 5px;
   color: black;
   display: flex;
   justify-content: center;
   width: 20%;
 }
 
-.Pendente {
-  background-color: #ccb800;
-  color: black;
-  display: flex;
-  justify-content: center;
-  width: 20%;
-}
-
-.Preparando {
-  background-color: #6c0;
-  color: black;
-  display: flex;
-  justify-content: center;
-  width: 20%;
-}
-
-.Entregue {
-  background-color: #00cc9b;
-  color: black;
-  display: flex;
-  justify-content: center;
-  width: 20%;
-}
-
-.dateValue {
+.SellerOrders-date {
   background-color: #036b52;
   color: white;
   display: flex;
@@ -71,7 +64,7 @@
   width: 20%;
 }
 
-.priceValue {
+.SellerOrders-price {
   background-color: #421981;
   color: white;
   display: flex;
@@ -79,10 +72,44 @@
   width: 20%;
 }
 
-.addrValue {
+.SellerOrders-tr-link {
+  text-decoration: none;
+  width: 100%;
+}
+
+.SellerOrders-address {
   background-color: #056cf9;
+  border-radius: 0 5px 5px 0;
   color: white;
   display: flex;
   justify-content: center;
   width: 20%;
+}
+
+.SellerOrders-pending {
+  background-color: #ccb800;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+.SellerOrders-preparing {
+  background-color: #6c0;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+.SellerOrders-delivered {
+  background-color: #00cc9b;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 20%;
+}
+
+.SellerOrders-tr-link:hover {
+  opacity: 0.5;
 }
