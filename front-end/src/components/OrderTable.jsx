@@ -42,6 +42,11 @@ function OrderTable({ testIdRoute, products }) {
     setOrder(newList);
   };
 
+  const setSubtotalClass = () => {
+    if (products) return 'OrderTable-subtotal';
+    return 'OrderTable-subtotal-alt';
+  };
+
   return (
     <table className="OrderTable-table">
       <thead className="OrderTable-thead">
@@ -87,7 +92,7 @@ function OrderTable({ testIdRoute, products }) {
               {price.toFixed(2).toString().replace('.', ',')}
             </td>
             <td
-              className="OrderTable-subtotal"
+              className={ setSubtotalClass() }
               data-testid={ `${testIdRoute}${SUBTOTAL}${index}` }
             >
               {(price * quantity).toFixed(2).toString().replace('.', ',')}
