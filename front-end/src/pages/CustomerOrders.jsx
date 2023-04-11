@@ -20,47 +20,63 @@ function CustomerOrders() {
     fetchOrders(user.id, user.token);
   }, []);
 
+  const getStatusClass = (status) => {
+    if (status === 'Pendente') return 'CustomerOrders-pending';
+    if (status === 'Preparando'
+    || status === 'Em Trânsito') return 'CustomerOrders-preparing';
+    if (status === 'Entregue') return 'CustomerOrders-delivered';
+  };
+
   return (
-    <div>
+    <div className="CustomerOrders-main-div">
       <Header />
-      <section className="container">
-      <div className="table">
-        <h1 className="value">Id</h1>
-        <h1 className="value">Status</h1>
-        <h1 className="value">Data</h1>
-        <h1 className="value">Valor</h1>
-      </div>
-      {orders.length > 0
-      && orders.map(({ id, status, totalPrice, saleDate }, index) => (
-        <Link className="ordersTable"
-          to={ `/customer/orders/${id}` }
-          key={ index }
-        >
-          <div className="ordersContent">
-            <p
-            className="idValue"
-            data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
-              {id}
-            </p>
-            <p
-            className={ status }
-            data-testid={ `${ROUTE}${STATUS}${id}` }>
-              {status}
-            </p>
-            <p
-            className="dateValue"
-            data-testid={ `${ROUTE}${DATE}${id}` }>
-              {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
-            </p>
-            <p
-            className="priceValue"
-            data-testid={ `${ROUTE}${PRICE}${id}` }>
-              {totalPrice.replace('.', ',')}
-            </p>
-          </div>
-        </Link>
-      ))}
-      </section>
+      <table className="CustomerOrders-table">
+        <thead className="CustomerOrders-thead">
+          <tr className="CustomerOrders-thead-tr">
+            <th className="CustomerOrders-th">Id</th>
+            <th className="CustomerOrders-th">Status</th>
+            <th className="CustomerOrders-th">Data</th>
+            <th className="CustomerOrders-th">Valor</th>
+          </tr>
+        </thead>
+        <tbody className="CustomerOrders-tbody">
+          {orders.length > 0
+        && orders.map(({ id, status, totalPrice, saleDate }, index) => (
+          <Link
+            className="CustomerOrders-tr-link"
+            to={ `/customer/orders/${id}` }
+            key={ index }
+          >
+            <tr className="CustomerOrders-tbody-tr">
+              <td
+                className="CustomerOrders-id"
+                data-testid={ `${ROUTE}${ORDER_ID}${id}` }
+              >
+                {id}
+              </td>
+              <td
+                className={ getStatusClass(status) }
+                data-testid={ `${ROUTE}${STATUS}${id}` }
+              >
+                {status}
+              </td>
+              <td
+                className="CustomerOrders-date"
+                data-testid={ `${ROUTE}${DATE}${id}` }
+              >
+                {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
+              </td>
+              <td
+                className="CustomerOrders-price"
+                data-testid={ `${ROUTE}${PRICE}${id}` }
+              >
+                {totalPrice.replace('.', ',')}
+              </td>
+            </tr>
+          </Link>
+        ))}
+        </tbody>
+      </table>
     </div>
   );
 }

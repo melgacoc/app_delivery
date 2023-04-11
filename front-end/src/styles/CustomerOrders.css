@@ -1,83 +1,108 @@
-.container {
-    max-width: 1920px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.CustomerOrders-main-div {
+  align-items: center;
+  background-color: #eaf1ef;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.table {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    flex-direction: row;
-    margin-top: 5%;
+.CustomerOrders-table {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1%;
+  width: 70%;
 }
 
-.ordersTable {
-    width: 80%;
-    height: 26px;
-    text-decoration: none;
+.CustomerOrders-thead {
+  font-size: 30px;
+  margin-top: 1%;
+  width: 100%;
 }
 
-.ordersContent {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+.CustomerOrders-thead-tr {
+  background-color: #b1c2be;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
 }
 
-.value {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    color: black;
+.CustomerOrders-th {
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 25%;
 }
 
-.idValue {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    background-color: #2fc18c;
-    color: black;
+.CustomerOrders-tbody {
+  width: 100%;
 }
 
-.Pendente {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    color: black;
-    background-color: #ccb800;
+.CustomerOrders-tbody-tr {
+  align-items: center;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  margin-top: 1%;
+  width: 100%;
 }
 
-.Preparando {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    color: black;
-    background-color: #6c0;
+.CustomerOrders-id {
+  background-color: #2fc18c;
+  border-radius: 5px 0 0 5px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 25%;
 }
 
-.Entregue {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    color: black;
-    background-color: #00cc9b;
+.CustomerOrders-date {
+  background-color: #036b52;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 25%;
 }
 
-.dateValue {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    background-color: #036b52;
-    color: white;
+.CustomerOrders-price {
+  background-color: #421981;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 25%;
 }
 
-.priceValue {
-    width: 25%;
-    display: flex;
-    justify-content: center;
-    background-color: #421981;
-    color: white;
+.CustomerOrders-tr-link {
+  text-decoration: none;
+  width: 100%;
+}
+
+
+.CustomerOrders-pending {
+  background-color: #ccb800;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 25%;
+}
+
+.CustomerOrders-preparing {
+  background-color: #6c0;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 25%;
+}
+
+.CustomerOrders-delivered {
+  background-color: #00cc9b;
+  color: black;
+  display: flex;
+  justify-content: center;
+  width: 25%;
+}
+
+.CustomerOrders-tr-link:hover {
+  opacity: 0.5;
 }
