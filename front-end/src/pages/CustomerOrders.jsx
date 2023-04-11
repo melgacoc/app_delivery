@@ -7,6 +7,7 @@ import { ROUTE,
   DATE,
   STATUS,
   PRICE } from '../dataTestedId/CustomerOrdersIds';
+import '../styles/CustomerOrders.css';
 
 const DATE_CUT_LIMIT = 10;
 
@@ -22,28 +23,44 @@ function CustomerOrders() {
   return (
     <div>
       <Header />
+      <section className="container">
+      <div className="table">
+        <h1 className="value">Id</h1>
+        <h1 className="value">Status</h1>
+        <h1 className="value">Data</h1>
+        <h1 className="value">Valor</h1>
+      </div>
       {orders.length > 0
       && orders.map(({ id, status, totalPrice, saleDate }, index) => (
-        <Link
+        <Link className="ordersTable"
           to={ `/customer/orders/${id}` }
           key={ index }
         >
-          <div>
-            <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
+          <div className="ordersContent">
+            <p
+            className="idValue"
+            data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
               {id}
             </p>
-            <p data-testid={ `${ROUTE}${STATUS}${id}` }>
+            <p
+            className={ status }
+            data-testid={ `${ROUTE}${STATUS}${id}` }>
               {status}
             </p>
-            <p data-testid={ `${ROUTE}${DATE}${id}` }>
+            <p
+            className="dateValue"
+            data-testid={ `${ROUTE}${DATE}${id}` }>
               {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
             </p>
-            <p data-testid={ `${ROUTE}${PRICE}${id}` }>
+            <p
+            className="priceValue"
+            data-testid={ `${ROUTE}${PRICE}${id}` }>
               {totalPrice.replace('.', ',')}
             </p>
           </div>
         </Link>
       ))}
+      </section>
     </div>
   );
 }

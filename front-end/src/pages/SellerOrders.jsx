@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Context from '../context/Context';
@@ -8,6 +8,7 @@ import { ROUTE,
   STATUS,
   PRICE,
   ADDRESS } from '../dataTestedId/SellerOrdersIds';
+import '../styles/SellerOrders.css';
 
 const DATE_CUT_LIMIT = 10;
 
@@ -23,6 +24,14 @@ function SellerOrders() {
   return (
     <div>
       <Header />
+      <section className="container">
+      <div className="table">
+        <h1 className="value">Id</h1>
+        <h1 className="value">Status</h1>
+        <h1 className="value">Data</h1>
+        <h1 className="value">Valor</h1>
+        <h1 className="value">Endereço</h1>
+      </div>
       {orders.length > 0
       && orders.map(({ id,
         status,
@@ -31,29 +40,40 @@ function SellerOrders() {
         deliveryAddress,
         deliveryNumber,
       }, index) => (
-        <Link
+        <Link className="ordersTable"
           to={ `/seller/orders/${id}` }
           key={ index }
         >
-          <div>
-            <p data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
+          <div className="ordersContent">
+            <p 
+            className="idValue"
+            data-testid={ `${ROUTE}${ORDER_ID}${id}` }>
               {id}
             </p>
-            <p data-testid={ `${ROUTE}${STATUS}${id}` }>
+            <p 
+            className={ status }
+            data-testid={ `${ROUTE}${STATUS}${id}` }>
               {status}
             </p>
-            <p data-testid={ `${ROUTE}${DATE}${id}` }>
+            <p 
+            className="dateValue"
+            data-testid={ `${ROUTE}${DATE}${id}` }>
               {saleDate.slice(0, DATE_CUT_LIMIT).split('-').reverse().join('/')}
             </p>
-            <p data-testid={ `${ROUTE}${PRICE}${id}` }>
+            <p 
+            className="priceValue"
+            data-testid={ `${ROUTE}${PRICE}${id}` }>
               {totalPrice.replace('.', ',')}
             </p>
-            <p data-testid={ `${ROUTE}${ADDRESS}${id}` }>
+            <p 
+            className="addrValue"
+            data-testid={ `${ROUTE}${ADDRESS}${id}` }>
               {`${deliveryAddress}, ${deliveryNumber}`}
             </p>
           </div>
         </Link>
       ))}
+      </section>
     </div>
   );
 }

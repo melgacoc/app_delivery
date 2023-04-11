@@ -1,0 +1,83 @@
+.container {
+    max-width: 1920px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: row;
+    margin-top: 5%;
+}
+
+.ordersTable {
+    width: 80%;
+    height: 26px;
+    text-decoration: none;
+}
+
+.ordersContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.value {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.idValue {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: #2fc18c;
+    color: black;
+}
+
+.Pendente {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: #ccb800;
+}
+
+.Preparando {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: #6c0;
+}
+
+.Entregue {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    color: black;
+    background-color: #00cc9b;
+}
+
+.dateValue {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: #036b52;
+    color: white;
+}
+
+.priceValue {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    background-color: #421981;
+    color: white;
+}
